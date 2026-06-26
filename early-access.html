@@ -128,7 +128,7 @@
   <section id="street" style="background:#f4f1e8;padding:clamp(64px,9vw,112px) clamp(20px,5vw,64px)">
     <div style="max-width:880px;margin:0 auto;text-align:center">
       <div data-reveal style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6b6a5c;margin-bottom:16px">What this is</div>
-      <h2 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(28px,4.4vw,52px);line-height:1.05;text-wrap:balance">The right schools may already be looking for you.</h2>
+      <h2 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(28px,4.4vw,52px);line-height:1.05;text-wrap:balance">Keep your own search. The right schools find you too.</h2>
       <p data-reveal data-reveal-delay="120" style="margin:20px auto 0;max-width:56ch;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#5e6157;text-wrap:pretty">Set what matters to you, ranking, budget, culture, the schools you&rsquo;re weighing, and build one profile. Keep your own search. Separately, verified European business schools look for candidates who fit, and the ones that match your profile reach out, privately. A low-effort way to be found by schools you&rsquo;d want anyway.</p>
       <div data-reveal data-reveal-delay="180" style="margin:26px auto 0;display:inline-flex;align-items:center;gap:12px;max-width:60ch"><span style="flex:none;width:28px;height:1px;background:#cdc7b4"></span><span style="font-size:13px;line-height:1.5;color:#6b6a5c;font-weight:500">Built with admissions, careers and programme leaders from top European business schools.</span><span style="flex:none;width:28px;height:1px;background:#cdc7b4"></span></div>
     </div>
@@ -187,28 +187,32 @@
             <p style="margin:6px 0 0;font-size:12px;line-height:1.5;color:#6b6a5c">Takes about 20 seconds. The only field that matters is your email.</p>
 
             <form data-form style="margin-top:16px;display:flex;flex-direction:column;gap:12px">
-              <div style="display:flex;flex-direction:column;gap:6px">
-                <label for="rr-fn" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">First name</label>
-                <input id="rr-fn" name="firstName" type="text" autocomplete="given-name" placeholder="Alex" class="rr-in" style="border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+              <div style="display:flex;flex-wrap:wrap;gap:12px">
+                <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 140px;min-width:0">
+                  <label for="rr-fn" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">First name</label>
+                  <input id="rr-fn" name="firstName" type="text" autocomplete="given-name" placeholder="Alex" class="rr-in" style="width:100%;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 140px;min-width:0">
+                  <label for="rr-em" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Email</label>
+                  <input id="rr-em" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="rr-in" style="width:100%;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+                </div>
               </div>
-              <div style="display:flex;flex-direction:column;gap:6px">
-                <label for="rr-em" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Email</label>
-                <input id="rr-em" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="rr-in" style="border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
-              </div>
-              <div style="display:flex;flex-direction:column;gap:6px">
-                <label for="rr-prog" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Programme</label>
-                <select id="rr-prog" name="programmeType" class="rr-in" style="border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;color:#1a1c18;outline:none;transition:border-color .2s,box-shadow .2s">
-                  <option value="" selected>Select</option>
-                  <option>Full-time MBA</option>
-                  <option>Part-time MBA</option>
-                  <option>Master in Management</option>
-                  <option>Master in Finance</option>
-                  <option>Still deciding</option>
-                </select>
-              </div>
-              <div style="display:flex;flex-direction:column;gap:6px">
-                <label for="rr-ctry" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Country of residence</label>
-                <input id="rr-ctry" name="country" type="text" autocomplete="country-name" placeholder="e.g. India" class="rr-in" style="border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+              <div style="display:flex;flex-wrap:wrap;gap:12px">
+                <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 140px;min-width:0">
+                  <label for="rr-prog" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Programme</label>
+                  <select id="rr-prog" name="programmeType" class="rr-in" style="width:100%;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;color:#1a1c18;outline:none;transition:border-color .2s,box-shadow .2s">
+                    <option value="" selected>Select</option>
+                    <option>Full-time MBA</option>
+                    <option>Part-time MBA</option>
+                    <option>Master in Management</option>
+                    <option>Master in Finance</option>
+                    <option>Still deciding</option>
+                  </select>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 140px;min-width:0">
+                  <label for="rr-ctry" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Country of residence</label>
+                  <input id="rr-ctry" name="country" type="text" autocomplete="country-name" placeholder="e.g. India" class="rr-in" style="width:100%;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+                </div>
               </div>
               <label style="display:flex;gap:10px;align-items:flex-start;margin-top:6px;cursor:pointer">
                 <input type="checkbox" name="consent" required style="margin-top:2px;width:16px;height:16px;accent-color:#1f3d2e;flex:none;cursor:pointer">
@@ -247,15 +251,13 @@
       <div data-reveal data-reveal-delay="100" style="flex:1.5 1 420px;min-width:0">
         <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,232,.6)">From inside admissions</div>
         <blockquote style="margin:20px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(22px,2.8vw,34px);line-height:1.28;letter-spacing:-0.01em;color:#f4f1e8;text-wrap:pretty">&ldquo;I spent years on the admissions committee of a leading European business school. I watched brilliant people get rejected for reasons they were never told. This is the guidance I wish I could have given every one of them.&rdquo;</blockquote>
-        <div style="margin-top:26px;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(244,241,232,.74)">An admissions insider, from inside a top European programme</div>
-        <p style="margin:18px 0 0;max-width:48ch;font-size:14.5px;line-height:1.55;color:rgba(244,241,232,.78)">That is how we know what schools really look for, and it shapes how the right schools find you.</p>
-        <p style="margin:18px 0 0;max-width:50ch;font-size:14px;line-height:1.55;color:rgba(244,241,232,.82);font-weight:500">Shaped with career-services directors, MBA programme managers and former admissions recruiters at top European business schools &mdash; kept anonymous until we open, because they still advise schools today.</p>
+        <p style="margin:28px 0 0;max-width:50ch;font-size:14px;line-height:1.55;color:rgba(244,241,232,.82);font-weight:500">Shaped with career-services directors, MBA programme managers and former admissions recruiters at top European business schools.</p>
       </div>
     </div>
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section style="background:#f4f1e8;padding:0 clamp(20px,5vw,72px) clamp(64px,9vw,120px)">
+  <section style="background:#f4f1e8;padding:clamp(64px,9vw,112px) clamp(20px,5vw,72px) clamp(64px,9vw,120px)">
     <div style="max-width:840px;margin:0 auto">
       <h2 data-reveal style="margin:0 0 8px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(26px,3.4vw,42px)">Questions, answered plainly.</h2>
       <div style="margin-top:28px">
