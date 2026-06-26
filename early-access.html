@@ -1,0 +1,735 @@
+<!doctype html>
+<!-- UNBRANDED early-access waitlist landing page — "Reading Room".
+     Faithful port of the Claude-Design handoff (design_handoff_early_access_landing)
+     to a self-contained, framework-free page. No proprietary DC runtime.
+     FINAL-PASS TODO: self-host fonts (GDPR), licensed/AI photography into the slots,
+     real legal docs behind the footer links, wire the form to the waitlist endpoint. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Early access: a new way into Europe's business schools</title>
+<meta name="description" content="A new way into Europe's business schools is coming. Stop applying into silence. Build one profile, see which schools actually fit you, and hear from the ones that want you. Free for students, private until there's mutual interest. Join the early-access list." />
+<style>
+@font-face{font-family:'Geist';font-style:normal;font-display:swap;font-weight:100 900;src:url('fonts/geist-var.woff2') format('woff2')}
+@font-face{font-family:'Source Serif 4';font-style:normal;font-display:swap;font-weight:200 900;src:url('fonts/source-serif-4-var.woff2') format('woff2')}
+</style>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:#f4f1e8;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  ::selection{background:#1f3d2e;color:#f4f1e8}
+  img{display:block;max-width:100%}
+  input,button,textarea{font:inherit;color:inherit}
+  a{color:inherit}
+  @keyframes rr-kenburns{0%{transform:scale(1.05)}100%{transform:scale(1.18)}}
+  @keyframes rr-scan{0%,16%{transform:translateX(2px)}24%,40%{transform:translateX(46px)}48%,64%{transform:translateX(90px)}72%,90%{transform:translateX(134px)}100%{transform:translateX(2px)}}
+  @keyframes rr-grow{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+  @keyframes rr-send{0%{transform:translate(-50%,8px) rotate(-2deg);opacity:0}14%{opacity:1}70%{transform:translate(-50%,-28px) rotate(2deg);opacity:1}100%{transform:translate(-50%,-54px) rotate(3deg);opacity:0}}
+  @keyframes rr-ripple{0%{transform:translate(-50%,-50%) scale(.5);opacity:.85}100%{transform:translate(-50%,-50%) scale(2.6);opacity:0}}
+  @keyframes rr-dot{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-4px);opacity:1}}
+  @keyframes rr-cellfill{0%,100%{opacity:.2}45%{opacity:1}}
+  @keyframes rr-fit{0%{transform:translate(-340%,-50%) scale(.8);opacity:0}25%{opacity:1}45%{transform:translate(-50%,-50%) scale(1)}70%{transform:translate(-50%,-50%) scale(1.55)}85%,100%{transform:translate(-50%,-50%) scale(1)}}
+  @keyframes rr-tilt{0%,100%{transform:translate(-50%,0) rotate(-7deg)}50%{transform:translate(-50%,0) rotate(7deg)}}
+  @keyframes rr-stamp{0%{transform:translate(-50%,-50%) scale(1.8);opacity:0}30%,70%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(-50%,-50%) scale(1.8);opacity:0}}
+  /* hover/focus (ported from the DC style-hover / style-focus attrs) */
+  .bhov:hover{background:#163024 !important}
+  .bhov-cream:hover{background:#fff !important}
+  .rr-in:focus{border-color:#1f3d2e !important;box-shadow:0 0 0 3px rgba(31,61,46,.32) !important}
+  .rr-in-dark:focus{border-color:#f4f1e8 !important;box-shadow:0 0 0 3px rgba(244,241,232,.18) !important}
+  .rr-foot:hover{color:#1f3d2e !important}
+  .bhov-ghost:hover{background:#e7ece5 !important}
+  @keyframes rr-matchpulse{0%{transform:translate(-50%,0) scale(1);opacity:.5}100%{transform:translate(-50%,0) scale(2.5);opacity:0}}
+  @keyframes rr-heroword{0%{opacity:0;transform:translateY(34px)}100%{opacity:.96;transform:translateY(0)}}
+  @keyframes rr-sweep{0%{transform:translateX(-5px)}50%{transform:translateX(5px)}100%{transform:translateX(0)}}
+  @keyframes rr-shuffle{0%{transform:translateY(-6px);opacity:.45}100%{transform:translateY(0);opacity:1}}
+  @keyframes rr-swoosh{0%{transform:translate(-10px,10px)}100%{transform:translate(0,0)}}
+  @keyframes rr-tick{0%{transform:rotate(12deg)}70%{transform:rotate(-4deg)}100%{transform:rotate(0)}}
+  @keyframes rr-pulse{0%{transform:scale(1.16)}100%{transform:scale(1)}}
+  @keyframes rr-tip{0%{transform:rotate(-8deg)}60%{transform:rotate(4deg)}100%{transform:rotate(0)}}
+  @keyframes rr-press{0%{transform:translateY(-8px)}55%{transform:translateY(2px)}100%{transform:translateY(0)}}
+  @keyframes rr-lock{0%{transform:scale(.55);opacity:.5}100%{transform:scale(2.3);opacity:0}}
+  .se-wrap{max-width:1080px;margin:clamp(40px,6vw,68px) auto 0}
+  .se-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,2vw,22px)}
+  .se-card{background:#fff;border:1px solid #e2dcc9;border-radius:14px;padding:22px 22px 24px;box-shadow:0 16px 34px -22px rgba(22,48,36,.30)}
+  .se-num{font-size:12px;font-weight:600;color:#1f3d2e;font-variant-numeric:tabular-nums lining-nums}
+  .se-rule{width:26px;height:2px;background:#1f3d2e;margin:8px 0 13px}
+  .se-title{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(18px,1.7vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em;margin:0 0 14px}
+  .se-mini{background:#faf8f1;border:1px solid #efe7d6;border-radius:10px;padding:14px}
+  .se-who{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+  .se-av{flex:none;width:28px;height:28px;border-radius:50%;background:#fff;border:1px solid #ded9c9;display:flex;align-items:center;justify-content:center;color:#1f3d2e}
+  .se-name{font-size:13px;font-weight:600;color:#1a1c18}
+  .se-chips{display:flex;flex-wrap:wrap;gap:7px}
+  .se-chip{font-size:11.5px;color:#5e6157;background:#fff;border:1px solid #e2dcc9;border-radius:7px;padding:4px 9px}
+  .se-attr{display:flex;align-items:center;justify-content:space-between;font-size:12px;padding:7px 0;border-top:1px solid #efe7d6}
+  .se-attr:first-of-type{border-top:none}
+  .se-attrL{color:#6b6a5c}
+  .se-attrV{display:flex;align-items:center;gap:7px;color:#1a1c18;font-weight:500}
+  .se-ok{flex:none;width:16px;height:16px;border-radius:50%;background:#2e6b45;color:#fff;display:flex;align-items:center;justify-content:center}
+  .se-msg{display:flex;gap:10px;align-items:flex-start}
+  .se-lock{display:flex;align-items:center;gap:6px;font-size:11px;color:#6b6a5c;margin-top:11px}
+  .se-cap{font-size:13px;line-height:1.55;color:#5e6157;margin:13px 0 0;text-wrap:pretty}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+</style>
+</head>
+<body>
+
+<div id="rr-root" style="font-family:'Geist',ui-sans-serif,system-ui,sans-serif;color:#1a1c18;background:#f4f1e8;position:relative">
+
+  <!-- ===== NAV ===== -->
+  <nav data-nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,4vw,48px);background:transparent;border-bottom:1px solid transparent;transition:background .4s cubic-bezier(.2,.7,.3,1),border-color .4s cubic-bezier(.2,.7,.3,1)">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span data-nav-link style="width:32px;height:32px;border-radius:8px;border:1.5px solid #fff;display:flex;align-items:center;justify-content:center;color:#fff;transition:color .4s,border-color .4s">
+        <span style="width:9px;height:9px;border-radius:2px;background:currentColor;transform:rotate(45deg);display:block"></span>
+      </span>
+    </div>
+    <div style="display:flex;align-items:center;gap:clamp(14px,2vw,28px)">
+      <a href="#street" data-nav-link data-cta="street" style="font-size:14px;font-weight:500;text-decoration:none;color:#fff;transition:color .4s;letter-spacing:.005em">How it works</a>
+      <button data-magnetic data-cta="offer" class="bhov" style="border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:14px;padding:11px 18px;border-radius:8px;box-shadow:0 1px 2px 0 rgb(0 0 0/.09);transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Get early access</button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header data-parallax-scope style="position:relative;height:100svh;min-height:660px;overflow:hidden;background:#163024">
+    <div data-parallax="0.18" style="position:absolute;inset:-8% 0 -8% 0">
+      <div data-hero-layer style="position:absolute;inset:0;opacity:1;transition:opacity 1.6s cubic-bezier(.2,.7,.3,1)">
+        <img src="img/hero-1.jpg" alt="Students crossing a sunlit European campus at golden hour" width="2200" height="1467" onerror="this.style.opacity='0'" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:saturate(.82) contrast(1.04) brightness(.94) sepia(.16) hue-rotate(-6deg);animation:rr-kenburns 22s ease-out forwards" data-slot="hero-1">
+      </div>
+      <div data-hero-layer style="position:absolute;inset:0;opacity:0;transition:opacity 1.6s cubic-bezier(.2,.7,.3,1)">
+        <img src="img/hero-2.jpg" alt="Historic university hall facade in warm evening light" width="2200" height="1467" onerror="this.style.opacity='0'" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.82) contrast(1.04) brightness(.94) sepia(.16) hue-rotate(-6deg);animation:rr-kenburns 22s ease-out forwards" data-slot="hero-2">
+      </div>
+      <div data-hero-layer style="position:absolute;inset:0;opacity:0;transition:opacity 1.6s cubic-bezier(.2,.7,.3,1)">
+        <img src="img/hero-3.jpg" alt="A quiet arcade walkway on a European business-school campus" width="2200" height="1467" onerror="this.style.opacity='0'" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.82) contrast(1.04) brightness(.94) sepia(.16) hue-rotate(-6deg);animation:rr-kenburns 22s ease-out forwards" data-slot="hero-3">
+      </div>
+    </div>
+    <div data-grade style="position:absolute;inset:0;background:rgba(31,61,46,.34);mix-blend-mode:multiply;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(118deg,rgba(22,48,36,.86) 0%,rgba(22,48,36,.5) 34%,rgba(31,61,46,.12) 64%,rgba(31,61,46,.34) 100%);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,48,36,.62) 0%,rgba(22,48,36,0) 38%);pointer-events:none"></div>
+
+    <div style="position:relative;z-index:5;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(20px,4vw,48px);max-width:1120px">
+      <h1 data-reveal style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.018em;color:#f4f1e8;font-size:clamp(44px,8.6vw,128px);line-height:.98;max-width:15ch;text-wrap:balance;text-shadow:0 2px 40px rgba(0,0,0,.22)">Let the right schools find you first.</h1>
+      <p data-reveal data-reveal-delay="120" style="margin:28px 0 0;max-width:58ch;font-size:clamp(16px,1.6vw,20px);line-height:1.55;color:rgba(244,241,232,.92);font-weight:400">Stop applying into silence. Build one profile, see which of 200+ European business schools actually fit you and your goals, and hear from the ones that want you. See where you stand, and stop guessing which school is right — or whether you measure up.</p>
+      <div data-reveal data-reveal-delay="220" style="margin:26px 0 0;display:flex;align-items:center;gap:16px;max-width:52ch">
+        <span style="flex:none;width:34px;height:1px;background:rgba(244,241,232,.5)"></span>
+        <span style="font-size:clamp(14px,1.3vw,17px);font-weight:500;line-height:1.45;color:rgba(244,241,232,.85)">Always free for students, now and at launch. Private until there&rsquo;s mutual interest.</span>
+      </div>
+      <div data-reveal data-reveal-delay="320" style="margin-top:34px">
+        <button data-magnetic data-cta="offer" class="bhov" style="border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:15px 26px;border-radius:8px;box-shadow:0 1px 2px 0 rgb(0 0 0/.18);display:inline-flex;align-items:center;gap:12px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Get early access <span style="font-weight:500">&rarr;</span></button>
+        <!-- SOCIAL PROOF — replace 2,300 with the real waitlist count before going live -->
+        <div data-reveal data-reveal-delay="380" style="margin-top:18px;font-size:13.5px;line-height:1.45;color:rgba(244,241,232,.78);font-weight:500">Join <strong style="color:#f4f1e8;font-weight:700">2,300+</strong> future MBA candidates already on the list.</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== WHAT THIS IS ===== -->
+  <section id="street" style="background:#f4f1e8;padding:clamp(64px,9vw,112px) clamp(20px,5vw,64px)">
+    <div style="max-width:880px;margin:0 auto;text-align:center">
+      <div data-reveal style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6b6a5c;margin-bottom:16px">What this is</div>
+      <h2 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(28px,4.4vw,52px);line-height:1.05;text-wrap:balance">The right schools may already be looking for you.</h2>
+      <p data-reveal data-reveal-delay="120" style="margin:20px auto 0;max-width:56ch;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#5e6157;text-wrap:pretty">Set what matters to you, ranking, budget, culture, the schools you&rsquo;re weighing, and build one profile. Keep your own search. Separately, verified European business schools look for candidates who fit, and the ones that match your profile reach out, privately. A low-effort way to be found by schools you&rsquo;d want anyway.</p>
+      <div data-reveal data-reveal-delay="180" style="margin:26px auto 0;display:inline-flex;align-items:center;gap:12px;max-width:60ch"><span style="flex:none;width:28px;height:1px;background:#cdc7b4"></span><span style="font-size:13px;line-height:1.5;color:#6b6a5c;font-weight:500">Built with admissions, careers and programme leaders from top European business schools.</span><span style="flex:none;width:28px;height:1px;background:#cdc7b4"></span></div>
+    </div>
+
+  </section>
+
+  <!-- ===== OFFER RAIL ===== -->
+  <section id="offer" style="background:#ece8db;border-top:1px solid #ded9c9;border-bottom:1px solid #ded9c9;padding:clamp(56px,8vw,108px) clamp(20px,5vw,72px)">
+    <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(40px,5vw,72px);align-items:flex-start">
+
+      <div style="flex:2 1 460px;min-width:0">
+        <div data-reveal style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6b6a5c;margin-bottom:16px">Inside the free Playbook</div>
+        <h2 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(28px,3.8vw,50px);line-height:1.04;max-width:16ch;text-wrap:balance">The ten mistakes that sink strong applicants.</h2>
+        <p data-reveal data-reveal-delay="120" style="margin:24px 0 0;max-width:52ch;font-size:clamp(15px,1.35vw,17.5px);line-height:1.62;color:#5e6157">A short guide from someone who spent two decades inside European admissions: what schools actually weigh, and where strong applicants quietly lose ground. The same read that, when we open, helps the right schools find you.</p>
+
+        <div style="margin-top:40px;display:flex;flex-direction:column">
+          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">01</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Starting too late</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">By the time you apply, much of the class is already taking shape. The calendar decides more than most people realise.</div></div></div>
+          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">02</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Choosing a school on rankings alone</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">The top of a list is rarely the right fit for you.</div></div></div>
+          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">03</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">One application, reused everywhere</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">Committees can tell, and it quietly costs you.</div></div></div>
+          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">04</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Career goals that stay fuzzy</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">A vague plan reads as no plan at all.</div></div></div>
+          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">05</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Not talking to schools before you apply</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">The applicants who reach out get read differently.</div></div></div>
+          <div data-reveal style="margin-top:8px;padding:18px 20px;border-top:1px solid #ded9c9;background:rgba(31,61,46,.04);border-radius:0 0 6px 6px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(15px,1.5vw,18px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Five more inside the Playbook &mdash;</div><div style="margin-top:4px;font-size:13.5px;line-height:1.5;color:#5e6157">including the one most strong applicants never see coming.</div></div>
+          <div style="border-top:1px solid #ded9c9"></div>
+        </div>
+      </div>
+
+      <div data-sticky-col style="flex:1 1 380px;max-width:480px;position:sticky;top:92px;align-self:flex-start">
+        <div data-card data-reveal style="background:#fff;border:1px solid #ded9c9;border-radius:8px;overflow:hidden;box-shadow:0 1px 2px 0 rgb(0 0 0/.09);transition:box-shadow .35s cubic-bezier(.2,.7,.3,1)">
+          <div data-parallax-scope style="position:relative;height:188px;overflow:hidden;background:#163024">
+            <img src="img/offer.jpg" alt="An open guide resting on a desk in a quiet reading room" loading="lazy" onerror="this.style.opacity='0'" style="position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;object-position:center 60%;filter:saturate(.8) contrast(1.04) brightness(.96) sepia(.16) hue-rotate(-6deg)">
+            <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(22,48,36,.7),rgba(31,61,46,.2));mix-blend-mode:multiply"></div>
+            <div style="position:absolute;left:18px;bottom:14px">
+              <div style="font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,232,.86)">The Playbook &middot; PDF</div>
+            </div>
+          </div>
+
+          <div style="padding:24px">
+            <h3 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px;letter-spacing:-0.012em;color:#1f3d2e;line-height:1.1">Be first when it opens.</h3>
+            <p style="margin:10px 0 0;font-size:13.5px;line-height:1.5;color:#5e6157">Here is exactly what you are signing up for:</p>
+            <div style="margin-top:14px;display:flex;flex-direction:column;gap:11px">
+              <div style="display:flex;gap:12px;align-items:baseline">
+                <span style="flex:none;width:64px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#1f3d2e">Now</span>
+                <span style="font-size:13px;line-height:1.5;color:#5e6157">The insider Playbook, free and instant.</span>
+              </div>
+              <div style="display:flex;gap:12px;align-items:baseline">
+                <span style="flex:none;width:64px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#1f3d2e">At launch</span>
+                <span style="font-size:13px;line-height:1.5;color:#5e6157">Early access — the right schools reach out, privately.</span>
+              </div>
+              <div style="display:flex;gap:12px;align-items:baseline">
+                <span style="flex:none;width:64px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#1f3d2e">A shot at</span>
+                <span style="font-size:13px;line-height:1.5;color:#5e6157">A free 1:1 with an admissions insider.</span>
+              </div>
+            </div>
+
+            <!-- SCARCITY — true to the stated mechanic ("first in, first to hear from schools"); keep only while that remains accurate -->
+            <p style="margin:16px 0 0;font-size:12px;line-height:1.5;color:#1f3d2e;font-weight:600">Access opens in stages — the first in line are the first schools see.</p>
+            <!-- ACTIVATION ENERGY — lowers perceived effort at the point of decision -->
+            <p style="margin:6px 0 0;font-size:12px;line-height:1.5;color:#6b6a5c">Takes about 20 seconds. The only field that matters is your email.</p>
+
+            <form data-form style="margin-top:16px;display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="rr-fn" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">First name</label>
+                <input id="rr-fn" name="firstName" type="text" autocomplete="given-name" placeholder="Alex" class="rr-in" style="border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="rr-em" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Email</label>
+                <input id="rr-em" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="rr-in" style="border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="rr-prog" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Programme</label>
+                <select id="rr-prog" name="programmeType" class="rr-in" style="border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;color:#1a1c18;outline:none;transition:border-color .2s,box-shadow .2s">
+                  <option value="" selected>Select</option>
+                  <option>Full-time MBA</option>
+                  <option>Part-time MBA</option>
+                  <option>Master in Management</option>
+                  <option>Master in Finance</option>
+                  <option>Still deciding</option>
+                </select>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="rr-ctry" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Country of residence</label>
+                <input id="rr-ctry" name="country" type="text" autocomplete="country-name" placeholder="e.g. India" class="rr-in" style="border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+              </div>
+              <label style="display:flex;gap:10px;align-items:flex-start;margin-top:6px;cursor:pointer">
+                <input type="checkbox" name="consent" required style="margin-top:2px;width:16px;height:16px;accent-color:#1f3d2e;flex:none;cursor:pointer">
+                <span style="font-size:11.5px;line-height:1.5;color:#6b6a5c">Send me the Playbook and occasional launch updates. I can unsubscribe anytime. See the <a href="legal.html#privacy" target="_blank" rel="noopener" style="color:#1f3d2e;text-decoration:underline;text-underline-offset:2px">Privacy Policy</a>.</span>
+              </label>
+              <button data-magnetic data-submit type="submit" class="bhov" style="margin-top:4px;border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:14px 18px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Send me the guide</button>
+              <div style="font-size:12px;color:#1f3d2e;text-align:center;font-weight:600">Free insider guide, instantly.</div>
+            </form>
+            <div data-success style="display:none;margin-top:20px;border:1px solid #ded9c9;background:#faf8f1;border-radius:8px;padding:24px 20px;text-align:center">
+              <div style="width:44px;height:44px;border-radius:999px;background:rgba(46,107,69,.13);color:#2e6b45;display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e6b45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"/></svg></div>
+              <div style="font-family:'Source Serif 4',Georgia,serif;font-size:21px;font-weight:600;color:#1f3d2e;letter-spacing:-0.01em">You&rsquo;re on the list.</div>
+              <p style="margin:8px 0 0;font-size:13.5px;line-height:1.55;color:#5e6157">Check your inbox to confirm. Your Playbook is on the way, and we&rsquo;ll email you the day we go live.</p>
+              <!-- SHARE NUDGE — peak-end moment + viral loop (students apply in groups) -->
+              <div style="margin-top:18px;padding-top:16px;border-top:1px solid #ded9c9">
+                <p style="margin:0 0 12px;font-size:13px;line-height:1.5;color:#5e6157">Applying this year with friends? Send them the list &mdash; early access is better in a group.</p>
+                <button type="button" data-share style="border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:13.5px;padding:11px 18px;border-radius:8px;display:inline-flex;align-items:center;gap:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f4f1e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-share-label>Send it to a friend</span></button>
+              </div>
+            </div>
+
+            <div style="margin-top:22px;font-size:10.5px;font-weight:500;letter-spacing:.04em;color:#6b6a5c;text-align:center;text-transform:uppercase">No spam. Unsubscribe anytime. GDPR-friendly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSIDER NOTE ===== -->
+  <section data-parallax-scope style="position:relative;overflow:hidden;background:#163024;color:#f4f1e8;padding:clamp(64px,9vw,128px) clamp(20px,5vw,72px)">
+    <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(36px,5vw,72px);align-items:center">
+      <div data-reveal style="flex:1 1 280px;max-width:380px;min-width:0">
+        <div style="position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;background:#0f241b;box-shadow:0 1px 2px 0 rgb(0 0 0/.18),0 8px 10px -1px rgb(0 0 0/.18)">
+          <img src="img/insider.jpg" alt="A poised professional in soft, warm window light" loading="lazy" onerror="this.style.opacity='0'" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.82) contrast(1.03) brightness(.96) sepia(.14) hue-rotate(-6deg)">
+          <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(31,61,46,.1),rgba(22,48,36,.55));mix-blend-mode:multiply"></div>
+        </div>
+      </div>
+      <div data-reveal data-reveal-delay="100" style="flex:1.5 1 420px;min-width:0">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,232,.6)">From inside admissions</div>
+        <blockquote style="margin:20px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:clamp(22px,2.8vw,34px);line-height:1.28;letter-spacing:-0.01em;color:#f4f1e8;text-wrap:pretty">&ldquo;I spent years on the admissions committee of a leading European business school. I watched brilliant people get rejected for reasons they were never told. This is the guidance I wish I could have given every one of them.&rdquo;</blockquote>
+        <div style="margin-top:26px;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(244,241,232,.74)">An admissions insider, from inside a top European programme</div>
+        <p style="margin:18px 0 0;max-width:48ch;font-size:14.5px;line-height:1.55;color:rgba(244,241,232,.78)">That is how we know what schools really look for, and it shapes how the right schools find you.</p>
+        <p style="margin:18px 0 0;max-width:50ch;font-size:14px;line-height:1.55;color:rgba(244,241,232,.82);font-weight:500">Shaped with career-services directors, MBA programme managers and former admissions recruiters at top European business schools &mdash; kept anonymous until we open, because they still advise schools today.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section style="background:#f4f1e8;padding:clamp(56px,8vw,104px) clamp(20px,5vw,72px)">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:#ded9c9;border:1px solid #ded9c9;border-radius:8px;overflow:hidden">
+        <div data-reveal style="background:#f4f1e8;padding:30px 26px"><div style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(34px,4vw,54px);color:#1f3d2e;line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums lining-nums"><span data-count="20">20</span> yrs</div><div style="margin-top:14px;font-size:10.5px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase;line-height:1.5">Inside European admissions, behind the guide</div></div>
+        <div data-reveal style="background:#f4f1e8;padding:30px 26px"><div style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(34px,4vw,54px);color:#1f3d2e;line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums lining-nums"><span data-count="10">10</span></div><div style="margin-top:14px;font-size:10.5px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase;line-height:1.5">Common mistakes the guide breaks down</div></div>
+        <div data-reveal style="background:#f4f1e8;padding:30px 26px"><div style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(34px,4vw,54px);color:#1f3d2e;line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums lining-nums"><span data-count="30">30</span> min</div><div style="margin-top:14px;font-size:10.5px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase;line-height:1.5">Online 1:1 with an admissions insider, at launch</div></div>
+        <div data-reveal style="background:#f4f1e8;padding:30px 26px"><div style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(34px,4vw,54px);color:#1f3d2e;line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums lining-nums">&euro;<span data-count="0">0</span></div><div style="margin-top:14px;font-size:10.5px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase;line-height:1.5">To join and to get the Playbook</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section style="background:#f4f1e8;padding:0 clamp(20px,5vw,72px) clamp(64px,9vw,120px)">
+    <div style="max-width:840px;margin:0 auto">
+      <h2 data-reveal style="margin:0 0 8px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(26px,3.4vw,42px)">Questions, answered plainly.</h2>
+      <div style="margin-top:28px">
+        <div data-faq style="border-top:1px solid #ded9c9">
+          <button data-faq-btn aria-expanded="true" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px">
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(17px,1.7vw,21px);color:#1f3d2e;letter-spacing:-0.008em">Is it free to join?</span>
+            <span data-faq-plus style="flex:none;font-size:20px;font-weight:400;color:#1f3d2e;transition:transform .25s cubic-bezier(.2,.7,.3,1);transform:rotate(45deg)">+</span>
+          </button>
+          <p data-faq-a style="margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">Yes. Joining the early-access list costs nothing, and the Admissions Playbook is delivered free the moment you confirm your email. There is nothing to buy now, and nothing to buy at launch.</p>
+        </div>
+        <div data-faq style="border-top:1px solid #ded9c9">
+          <button data-faq-btn aria-expanded="false" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px">
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(17px,1.7vw,21px);color:#1f3d2e;letter-spacing:-0.008em">What exactly is the platform?</span>
+            <span data-faq-plus style="flex:none;font-size:20px;font-weight:400;color:#1f3d2e;transition:transform .25s cubic-bezier(.2,.7,.3,1);transform:rotate(0deg)">+</span>
+          </button>
+          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">A new way into Europe&rsquo;s top business schools, where verified programmes discover and pursue candidates rather than the other way around. We&rsquo;ll share exactly how it works as we open access. For now, early members get the first look.</p>
+        </div>
+        <div data-faq style="border-top:1px solid #ded9c9">
+          <button data-faq-btn aria-expanded="false" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px">
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(17px,1.7vw,21px);color:#1f3d2e;letter-spacing:-0.008em">When does it launch?</span>
+            <span data-faq-plus style="flex:none;font-size:20px;font-weight:400;color:#1f3d2e;transition:transform .25s cubic-bezier(.2,.7,.3,1);transform:rotate(0deg)">+</span>
+          </button>
+          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">Soon, and in stages. The early-access list goes first: first in, first to hear from schools, and first to know the day it opens.</p>
+        </div>
+        <div data-faq style="border-top:1px solid #ded9c9">
+          <button data-faq-btn aria-expanded="false" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px">
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(17px,1.7vw,21px);color:#1f3d2e;letter-spacing:-0.008em">What do you do with my data?</span>
+            <span data-faq-plus style="flex:none;font-size:20px;font-weight:400;color:#1f3d2e;transition:transform .25s cubic-bezier(.2,.7,.3,1);transform:rotate(0deg)">+</span>
+          </button>
+          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">We use your email, and the programme, intake year and country you share, only to send the Playbook and occasional launch updates. We never sell your data, you can unsubscribe from any email, and everything is handled in line with GDPR and our Privacy Policy.</p>
+        </div>
+        <div data-faq style="border-top:1px solid #ded9c9">
+          <button data-faq-btn aria-expanded="false" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px">
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(17px,1.7vw,21px);color:#1f3d2e;letter-spacing:-0.008em">How does the consultation raffle work?</span>
+            <span data-faq-plus style="flex:none;font-size:20px;font-weight:400;color:#1f3d2e;transition:transform .25s cubic-bezier(.2,.7,.3,1);transform:rotate(0deg)">+</span>
+          </button>
+          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">When you create your account at launch, you&rsquo;re automatically entered into a draw for a free 30-minute one-to-one session with an admissions insider. No cost, no obligation, and no purchase required to enter.</p>
+        </div>
+        <div style="border-top:1px solid #ded9c9"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING BOOKEND ===== -->
+  <section data-parallax-scope style="position:relative;overflow:hidden;background:#163024">
+    <div data-parallax="0.14" style="position:absolute;inset:-8% 0">
+      <img src="img/closing.jpg" alt="Empty tiered lecture hall awaiting its next class" loading="lazy" onerror="this.style.opacity='0'" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.8) contrast(1.04) brightness(.82) sepia(.16) hue-rotate(-6deg)">
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(22,48,36,.92),rgba(31,61,46,.66) 55%,rgba(31,61,46,.82));mix-blend-mode:multiply"></div>
+    <div style="position:absolute;inset:0;background:rgba(22,48,36,.4)"></div>
+    <div style="position:relative;z-index:2;padding:clamp(72px,11vw,150px) clamp(20px,5vw,72px);max-width:1080px;margin:0 auto">
+      <div data-reveal style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,232,.7);margin-bottom:18px">Opens soon</div>
+      <h2 data-reveal data-reveal-delay="80" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#f4f1e8;font-size:clamp(32px,5vw,64px);line-height:1.04;max-width:18ch;text-wrap:balance">A new way in is almost here. Be first.</h2>
+      <!-- FOUNDER STORY — similarity / unity (true: founders are MBA candidates who lived this). Change or remove the name as you prefer. -->
+      <p data-reveal data-reveal-delay="130" style="margin:24px 0 0;max-width:52ch;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(17px,1.9vw,22px);line-height:1.4;color:#f4f1e8;text-wrap:pretty">&ldquo;We spent a year chasing schools and writing essays into a void, never sure we were good enough. We&rsquo;re building the opposite.&rdquo;</p>
+      <div data-reveal data-reveal-delay="170" style="margin-top:12px;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(244,241,232,.74)">Luca &amp; Philip, co-founders</div>
+      <p data-reveal data-reveal-delay="200" style="margin:22px 0 0;max-width:54ch;font-size:clamp(15px,1.5vw,18px);line-height:1.55;color:rgba(244,241,232,.88)">Join the first group today. Get the insider Playbook now, and a shot at a one-to-one when we launch.</p>
+      <!-- SOCIAL PROOF — keep this number in sync with the hero (use the real waitlist count) -->
+      <div data-reveal data-reveal-delay="220" style="margin-top:16px;font-size:13.5px;line-height:1.45;color:rgba(244,241,232,.78);font-weight:500"><strong style="color:#f4f1e8;font-weight:700">2,300+</strong> future MBA candidates have already joined.</div>
+      <!-- ACTIVATION ENERGY -->
+      <p data-reveal data-reveal-delay="260" style="margin:8px 0 0;font-size:12.5px;line-height:1.5;color:rgba(244,241,232,.6)">Takes about 20 seconds. The only field that matters is your email.</p>
+
+      <form data-form style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;max-width:560px">
+        <input type="text" name="firstName" autocomplete="given-name" placeholder="First name" aria-label="First name" class="rr-in-dark" style="flex:1 1 150px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
+        <input type="email" name="email" required autocomplete="email" placeholder="Email" aria-label="Email" class="rr-in-dark" style="flex:2 1 200px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
+        <select name="programmeType" aria-label="Programme type" class="rr-in-dark" style="flex:1 1 150px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
+          <option value="" selected style="color:#1a1c18">Programme</option>
+          <option style="color:#1a1c18">Full-time MBA</option>
+          <option style="color:#1a1c18">Part-time MBA</option>
+          <option style="color:#1a1c18">Master in Management</option>
+          <option style="color:#1a1c18">Master in Finance</option>
+          <option style="color:#1a1c18">Still deciding</option>
+        </select>
+        <input type="text" name="country" autocomplete="country-name" placeholder="Country of residence" aria-label="Country of residence" class="rr-in-dark" style="flex:1 1 150px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
+        <label style="flex:1 1 100%;display:flex;gap:10px;align-items:flex-start;cursor:pointer">
+          <input type="checkbox" name="consent" required style="margin-top:2px;width:16px;height:16px;accent-color:#f4f1e8;flex:none;cursor:pointer">
+          <span style="font-size:11.5px;line-height:1.5;color:rgba(244,241,232,.78)">Send me the Playbook and occasional launch updates. I can unsubscribe anytime. See the <a href="legal.html#privacy" target="_blank" rel="noopener" style="color:#f4f1e8;text-decoration:underline;text-underline-offset:2px">Privacy Policy</a>.</span>
+        </label>
+        <button data-magnetic data-submit type="submit" class="bhov-cream" style="flex:1 1 100%;border:none;cursor:pointer;background:#f4f1e8;color:#1f3d2e;font-weight:700;font-size:15px;padding:15px 22px;border-radius:8px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Join the first group</button>
+      </form>
+      <div data-success style="display:none;margin-top:34px;max-width:560px;border:1px solid rgba(244,241,232,.3);background:rgba(244,241,232,.08);border-radius:8px;padding:24px;display:none;gap:14px;align-items:center">
+        <span style="flex:none;width:40px;height:40px;border-radius:999px;background:rgba(244,241,232,.14);color:#f4f1e8;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f4f1e8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4 4 10-10"/></svg></span>
+        <div>
+          <div style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600;color:#f4f1e8">You&rsquo;re on the list.</div>
+          <div style="font-size:13.5px;color:rgba(244,241,232,.82);margin-top:3px">Check your inbox to confirm. Your Playbook is on the way, and we&rsquo;ll email you the day we go live.</div>
+          <!-- SHARE NUDGE — peak-end moment + viral loop -->
+          <div style="margin-top:14px">
+            <button type="button" data-share style="border:none;cursor:pointer;background:#f4f1e8;color:#1f3d2e;font-weight:700;font-size:13.5px;padding:10px 16px;border-radius:8px;display:inline-flex;align-items:center;gap:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1f3d2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span data-share-label>Send it to a friend</span></button>
+            <div style="font-size:12px;color:rgba(244,241,232,.7);margin-top:8px">Applying with friends? Early access is better in a group.</div>
+          </div>
+        </div>
+      </div>
+      <div data-reveal style="margin-top:20px;font-size:11px;font-weight:500;letter-spacing:.04em;color:rgba(244,241,232,.62);text-transform:uppercase">Free insider guide, instantly &middot; Unsubscribe anytime &middot; GDPR-friendly</div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:#f4f1e8;padding:40px clamp(20px,5vw,72px);border-top:1px solid #ded9c9">
+    <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;justify-content:space-between">
+      <span style="font-size:12.5px;color:#6b6a5c">&copy; 2026 &middot; All rights reserved.</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 22px">
+        <a href="legal.html#privacy" class="rr-foot" style="font-size:12.5px;color:#5e6157;text-decoration:none">Privacy Policy</a>
+        <a href="legal.html#imprint" class="rr-foot" style="font-size:12.5px;color:#5e6157;text-decoration:none">Imprint</a>
+        <a href="legal.html#cookies" class="rr-foot" style="font-size:12.5px;color:#5e6157;text-decoration:none">Cookie Notice</a>
+        <a href="legal.html#raffle" class="rr-foot" style="font-size:12.5px;color:#5e6157;text-decoration:none">Raffle Terms</a>
+        <button data-consent-reopen class="rr-foot" style="font-size:12.5px;color:#5e6157;background:none;border:none;cursor:pointer;padding:0;font-family:inherit">Cookie settings</button>
+      </div>
+    </div>
+  </footer>
+
+  <div data-mobilebar style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(244,241,232,.94);backdrop-filter:saturate(1.2) blur(8px);border-top:1px solid #ded9c9">
+    <button data-cta="offer" style="width:100%;border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:14px;border-radius:8px">Get early access</button>
+  </div>
+
+  <!-- ===== COOKIE CONSENT (GDPR — analytics gated until explicit opt-in) ===== -->
+  <div data-consent role="dialog" aria-label="Cookie consent" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:16px clamp(16px,4vw,40px);background:#fff;border-top:1px solid #ded9c9;box-shadow:0 -2px 16px -8px rgba(0,0,0,.18)">
+    <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between">
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5e6157;max-width:64ch">We use essential cookies to make this site work, and (only with your consent) analytics cookies to understand how it is used. You can change your choice anytime. See our <a href="legal.html#cookies" style="color:#1f3d2e;text-decoration:underline;text-underline-offset:2px">Cookie Notice</a> and <a href="legal.html#privacy" style="color:#1f3d2e;text-decoration:underline;text-underline-offset:2px">Privacy Policy</a>.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button data-consent-reject class="bhov-ghost" style="border:1px solid #d0cab6;background:transparent;color:#1f3d2e;font-weight:600;font-size:13px;padding:10px 16px;border-radius:8px;cursor:pointer;transition:background .2s">Reject non-essential</button>
+        <button data-consent-accept class="bhov" style="border:none;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:13px;padding:10px 18px;border-radius:8px;cursor:pointer;transition:background .2s">Accept all</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('rr-root');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers = [];
+
+  /* ---- reveals ---- */
+  (function(){
+    var els = root.querySelectorAll('[data-reveal]');
+    if(reduce || !('IntersectionObserver' in window)){ els.forEach(function(el){el.style.opacity='1';el.style.transform='none';}); return; }
+    els.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(26px)'; el.style.willChange='opacity,transform'; el.style.transition='opacity .85s cubic-bezier(.2,.7,.3,1), transform .85s cubic-bezier(.2,.7,.3,1)'; });
+    var io = new IntersectionObserver(function(ents){ ents.forEach(function(e){ if(e.isIntersecting){ var el=e.target; var d=parseInt(el.getAttribute('data-reveal-delay')||'0',10); el.style.transitionDelay=d+'ms'; el.style.opacity='1'; el.style.transform='none'; io.unobserve(el); } }); },{ threshold:0.16, rootMargin:'0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  /* ---- counters ---- */
+  (function(){
+    var els = root.querySelectorAll('[data-count]');
+    if(!('IntersectionObserver' in window)) return;
+    var run=function(el){ var target=parseFloat(el.getAttribute('data-count'))||0; if(reduce){ el.textContent=target; return; } var dur=1300, start=performance.now(); var step=function(t){ var p=Math.min((t-start)/dur,1); var e=1-Math.pow(1-p,3); el.textContent=Math.round(target*e); if(p<1) requestAnimationFrame(step); else el.textContent=target; }; requestAnimationFrame(step); };
+    var io=new IntersectionObserver(function(ents){ ents.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target); } }); },{ threshold:0.6 });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  /* ---- hero crossfade ---- */
+  (function(){
+    var layers=root.querySelectorAll('[data-hero-layer]');
+    if(reduce || layers.length<2) return;
+    var i=0;
+    var t=setInterval(function(){ i=(i+1)%layers.length; layers.forEach(function(l,n){ l.style.opacity = n===i?'1':'0'; }); }, 5400);
+    timers.push(t);
+  })();
+
+  /* ---- magnetic buttons ---- */
+  (function(){
+    if(reduce) return;
+    root.querySelectorAll('[data-magnetic]').forEach(function(btn){
+      var s=0.28;
+      btn.addEventListener('mousemove',function(e){ var r=btn.getBoundingClientRect(); var x=e.clientX-(r.left+r.width/2); var y=e.clientY-(r.top+r.height/2); btn.style.transform='translate('+(x*s)+'px,'+(y*s)+'px)'; });
+      btn.addEventListener('mouseleave',function(){ btn.style.transform='translate(0,0)'; });
+    });
+  })();
+
+  /* ---- nav scroll ---- */
+  (function(){
+    var nav=root.querySelector('[data-nav]'); if(!nav) return;
+    var card=root.querySelector('[data-card]');
+    var fn=function(){
+      var y = window.scrollY || document.documentElement.scrollTop;
+      var solid = y > 64;
+      nav.style.background = solid ? 'rgba(244,241,232,.92)' : 'transparent';
+      nav.style.backdropFilter = solid ? 'saturate(1.2) blur(10px)' : 'none';
+      nav.style.webkitBackdropFilter = solid ? 'saturate(1.2) blur(10px)' : 'none';
+      nav.style.borderBottomColor = solid ? '#ded9c9' : 'transparent';
+      root.querySelectorAll('[data-nav-link]').forEach(function(a){ a.style.color = solid ? '#1f3d2e' : '#fff'; if(a.tagName==='SPAN') a.style.borderColor = solid ? '#1f3d2e' : '#fff'; });
+      if(card){ var r=card.getBoundingClientRect(); card.style.boxShadow = (r.top < 140 && r.bottom > 200) ? '0 1px 2px 0 rgb(0 0 0/.18),0 8px 10px -1px rgb(0 0 0/.18)' : '0 1px 2px 0 rgb(0 0 0/.09)'; }
+    };
+    window.addEventListener('scroll', fn, { passive:true }); fn();
+  })();
+
+  /* ---- mobile bar ---- */
+  (function(){
+    var bar=root.querySelector('[data-mobilebar]'); var offer=document.getElementById('offer');
+    if(!bar) return;
+    var fn=function(){
+      var narrow = window.innerWidth <= 820;
+      var y = window.scrollY || 0;
+      var past = y > window.innerHeight * 0.85;
+      var beforeOffer = true;
+      if(offer){ var r=offer.getBoundingClientRect(); beforeOffer = r.top > window.innerHeight * 0.5; }
+      bar.style.display = (narrow && past && beforeOffer) ? 'block' : 'none';
+    };
+    window.addEventListener('scroll', fn, { passive:true });
+    window.addEventListener('resize', fn); fn();
+  })();
+
+  /* ---- smooth scroll (Lenis) + parallax (GSAP) ---- */
+  var lenis=null;
+  (function(){
+    if(reduce) return;
+    var start=Date.now();
+    var tryInit=function(){
+      if(!window.Lenis) return false;
+      lenis=new Lenis({ duration:1.15, easing:function(t){return 1-Math.pow(1-t,3);}, smoothWheel:true });
+      var raf=function(t){ lenis.raf(t); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+      if(window.gsap && window.ScrollTrigger){
+        gsap.registerPlugin(ScrollTrigger);
+        lenis.on('scroll', ScrollTrigger.update);
+        root.querySelectorAll('[data-parallax]').forEach(function(el){
+          var sp=(parseFloat(el.getAttribute('data-parallax'))||0.1);
+          var scope = el.closest('[data-parallax-scope]') || el;
+          gsap.fromTo(el, { yPercent: -sp*60 }, { yPercent: sp*60, ease:'none', scrollTrigger:{ trigger:scope, start:'top bottom', end:'bottom top', scrub:true } });
+        });
+      }
+      return true;
+    };
+    if(!tryInit()){ var iv=setInterval(function(){ if(tryInit() || Date.now()-start>4500) clearInterval(iv); }, 140); timers.push(iv); }
+  })();
+
+  /* ---- CTA scrolling ---- */
+  function scrollToId(id, offset){
+    var el=document.getElementById(id); if(!el) return;
+    if(lenis){ lenis.scrollTo(el,{ offset:offset }); }
+    else { var top=el.getBoundingClientRect().top + (window.scrollY||0) + offset; window.scrollTo({ top:top, behavior: reduce?'auto':'smooth' }); }
+  }
+  root.querySelectorAll('[data-cta]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var t=btn.getAttribute('data-cta');
+      if(t==='offer') scrollToId('offer', -16); else scrollToId(t, -72);
+    });
+  });
+
+  /* ---- FAQ accordion (single-open) ---- */
+  (function(){
+    var items=[].slice.call(root.querySelectorAll('[data-faq]'));
+    items.forEach(function(item){
+      var btn=item.querySelector('[data-faq-btn]');
+      var ans=item.querySelector('[data-faq-a]');
+      var plus=item.querySelector('[data-faq-plus]');
+      btn.addEventListener('click', function(){
+        var isOpen = btn.getAttribute('aria-expanded')==='true';
+        items.forEach(function(o){ o.querySelector('[data-faq-btn]').setAttribute('aria-expanded','false'); o.querySelector('[data-faq-a]').style.display='none'; o.querySelector('[data-faq-plus]').style.transform='rotate(0deg)'; });
+        if(!isOpen){ btn.setAttribute('aria-expanded','true'); ans.style.display='block'; plus.style.transform='rotate(45deg)'; }
+      });
+    });
+  })();
+
+  /* ---- form submit (shared) ---- */
+  (function(){
+    // Set this to your waitlist endpoint (a serverless fn / form service that stores the
+    // signup and sends the double-opt-in confirmation email). Until set, submissions are
+    // accepted optimistically and logged.
+    var WAITLIST_ENDPOINT = '';   // e.g. 'https://api.macademia.example/waitlist'
+    var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var done=false;
+    function showSuccess(){
+      done=true;
+      root.querySelectorAll('[data-form]').forEach(function(f){ f.style.display='none'; });
+      root.querySelectorAll('[data-success]').forEach(function(s){ s.style.display = (s.style.alignItems==='center') ? 'flex' : 'block'; });
+    }
+    root.querySelectorAll('[data-form]').forEach(function(form){
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if(done) return;
+        var em=form.querySelector('[name=email]'); var email=((em&&em.value)||'').trim();
+        if(!emailRe.test(email)){ if(em) em.focus(); return; }
+        var firstName=(((form.querySelector('[name=firstName]')||{}).value)||'').trim();
+        var gv=function(n){ var el=form.querySelector('[name='+n+']'); return ((el&&el.value)||'').trim(); };
+        var programmeType=gv('programmeType'), intakeYear=gv('intakeYear'), country=gv('country');
+        var consentEl=form.querySelector('[name=consent]'); var consent=consentEl?consentEl.checked:true;
+        if(consentEl && !consent){ consentEl.focus(); return; }   // gate: no consent, no Playbook
+        var btn=form.querySelector('[data-submit]'); if(btn){ btn.textContent='Joining\u2026'; btn.disabled=true; }
+        var payload={ firstName:firstName, email:email, programmeType:programmeType, intakeYear:intakeYear, country:country, consent:consent, source:'early-access' };
+        if(!WAITLIST_ENDPOINT){ console.log('[waitlist] (no endpoint set)', payload); var t0=setTimeout(showSuccess,650); timers.push(t0); return; }
+        fetch(WAITLIST_ENDPOINT,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+          .then(function(r){ if(!r.ok) throw new Error('status '+r.status); showSuccess(); })
+          .catch(function(err){ console.error('[waitlist] submit failed', err); if(btn){ btn.textContent='Try again'; btn.disabled=false; } });
+      });
+    });
+  })();
+
+  /* ---- cookie consent (GDPR): analytics is gated behind explicit opt-in,
+         never loaded before consent. Reject = essential only. ---- */
+  (function(){
+    var KEY='rr_consent_v1';
+    var banner=root.querySelector('[data-consent]');
+    function loadAnalytics(){
+      if(window.__rrAnalyticsLoaded) return; window.__rrAnalyticsLoaded=true;
+      // Plausible — cookieless, EU-hosted, privacy-first. Loads ONLY after opt-in.
+      // TODO (launch): set data-domain to the production domain + verify the site in Plausible.
+      var s=document.createElement('script');
+      s.defer=true; s.setAttribute('data-domain','[YOUR-DOMAIN]');
+      s.src='https://plausible.io/js/script.js';
+      document.head.appendChild(s);
+      console.log('[consent] analytics granted — Plausible loaded');
+    }
+    var stored=null; try{ stored=localStorage.getItem(KEY); }catch(e){}
+    if(stored==='all'){ loadAnalytics(); }
+    else if(stored!=='essential'){ if(banner) banner.style.display='block'; }
+    function choose(v){ try{ localStorage.setItem(KEY,v); }catch(e){} if(banner) banner.style.display='none'; if(v==='all') loadAnalytics(); }
+    var a=root.querySelector('[data-consent-accept]'), r=root.querySelector('[data-consent-reject]'), re=root.querySelector('[data-consent-reopen]');
+    if(a) a.addEventListener('click', function(){ choose('all'); });
+    if(r) r.addEventListener('click', function(){ choose('essential'); });
+    if(re) re.addEventListener('click', function(){ if(banner) banner.style.display='block'; });
+  })();
+
+  /* ================= TWO-WAY STREET (Dock-magnify + draw-in + per-step motion + union) ================= */
+  (function(){
+    var sec=document.getElementById('street'); if(!sec || !sec.querySelector('[data-roadwrap]')) return;
+    var wrap=sec.querySelector('[data-roadwrap]');
+    var spine=sec.querySelector('[data-spine]'), dash=sec.querySelector('[data-dash]'), fill=sec.querySelector('[data-fill]');
+    var marker=sec.querySelector('[data-marker]'); if(marker) marker.style.display='none';
+    var stations=[].slice.call(sec.querySelectorAll('[data-station]'));
+    var cross=sec.querySelector('[data-cross]');
+    var union=sec.querySelector('[data-union]'), ringL=sec.querySelector('[data-ringL]'), ringR=sec.querySelector('[data-ringR]'), core=sec.querySelector('[data-core]'), lockpulse=sec.querySelector('[data-lockpulse]');
+    var svg=sec.querySelector('[data-connect]'), paths=[].slice.call(sec.querySelectorAll('[data-cpath]'));
+    var pathLens=paths.map(function(p){ var L=p.getTotalLength?p.getTotalLength():300; p.style.strokeDasharray=L; return L; });
+    var anims=['rr-sweep','rr-shuffle','rr-swoosh','rr-tick','rr-pulse','rr-pulse','rr-tip','rr-press'];
+    var Y=[], matchY=0, mobile=false, sigma=150, fired=[], locked=false;
+    function clamp01(x){ return x<0?0:(x>1?1:x); }
+
+    function layout(){
+      mobile = window.innerWidth < 760;
+      stations.forEach(function(li){
+        var cell=li.querySelector('[data-iconcell]'), tx=li.querySelector('[data-stext]'), lane=li.getAttribute('data-lane');
+        if(mobile){
+          li.style.gridTemplateColumns='54px 1fr'; li.style.columnGap='18px'; li.style.minHeight='auto'; li.style.padding='16px 0';
+          if(cell) cell.style.gridColumn='1';
+          if(tx){ tx.style.gridColumn='2'; tx.style.justifySelf='stretch'; tx.style.textAlign='left'; tx.style.maxWidth='none'; }
+        } else {
+          li.style.gridTemplateColumns='1fr clamp(78px,9vw,104px) 1fr'; li.style.columnGap='0'; li.style.minHeight=''; li.style.padding='';
+          if(cell) cell.style.gridColumn='2';
+          if(tx){ tx.style.gridColumn = lane==='left'?'1':'3'; tx.style.justifySelf = lane==='left'?'end':'start'; tx.style.textAlign = lane==='left'?'right':'left'; }
+        }
+      });
+      var pos = mobile ? '27px' : '50%';
+      [spine,dash,fill].forEach(function(el){ if(el) el.style.left=pos; });
+      if(svg) svg.style.opacity = mobile?'0':'1';
+      if(union) union.style.left = mobile?'27px':'50%';
+    }
+    function measure(){
+      if(!wrap) return;
+      var wr=wrap.getBoundingClientRect();
+      Y = stations.map(function(li){ var m=li.querySelector('[data-mag]'); var r=(m||li).getBoundingClientRect(); return (r.top - wr.top) + r.height/2; });
+      if(union){ var mr=union.getBoundingClientRect(); matchY=(mr.top-wr.top)+mr.height/2; } else matchY=wrap.offsetHeight;
+      if(Y.length>1){ var gaps=0; for(var i=1;i<Y.length;i++) gaps+=(Y[i]-Y[i-1]); sigma=Math.max(90,(gaps/(Y.length-1))*0.6); }
+      if(spine) spine.style.height=matchY+'px';
+      if(dash) dash.style.height=matchY+'px';
+    }
+    function initDraw(){
+      sec.querySelectorAll('[data-p]').forEach(function(p){ p.style.strokeDasharray='1'; p.style.strokeDashoffset='1'; });
+      sec.querySelectorAll('[data-pf]').forEach(function(p){ p.style.opacity='0'; });
+    }
+    function setStation(li, focusY, i){
+      var Yi=Y[i]; var d=focusY-Yi;
+      var prox=Math.exp(-(d*d)/(2*sigma*sigma));
+      var drawP=clamp01((focusY-(Yi-sigma))/sigma);
+      var mag=li.querySelector('[data-mag]');
+      var scale=(mobile?0.78:0.55) + (mobile?0.16:0.26)*drawP + (mobile?0.12:0.46)*prox;
+      if(mag) mag.style.transform='scale('+scale.toFixed(3)+')';
+      li.querySelectorAll('[data-p]').forEach(function(p){ p.style.strokeDashoffset=(1-drawP).toFixed(3); });
+      li.querySelectorAll('[data-pf]').forEach(function(p){ p.style.opacity=drawP.toFixed(3); });
+      var dot=li.querySelector('[data-dot]'); if(dot) dot.style.opacity=(1-clamp01(drawP*1.5)).toFixed(3);
+      var disc=li.querySelector('[data-disc]'); if(disc) disc.style.opacity=clamp01(drawP*1.4).toFixed(3);
+      var lane=li.getAttribute('data-lane');
+      var tx=li.querySelector('[data-stext]');
+      if(tx){ tx.style.opacity=clamp01((drawP-0.08)*1.4).toFixed(3); var off=(1-drawP)*(mobile?0:(lane==='left'?12:-12)); tx.style.transform='translateX('+off.toFixed(1)+'px)'; }
+      var ln=li.querySelector('[data-sline]'); if(ln) ln.style.transform='scaleY('+drawP.toFixed(3)+')';
+      var gl=li.querySelector('[data-glyph]');
+      if(gl){ if(!fired[i] && drawP>0.9){ fired[i]=true; gl.style.transformOrigin='center'; gl.style.animation=anims[i]+' .8s cubic-bezier(.2,.7,.3,1) both'; } else if(fired[i] && drawP<0.25){ fired[i]=false; gl.style.animation='none'; } }
+    }
+    function update(p){
+      var focusY=p*(matchY||1);
+      if(fill) fill.style.height=focusY+'px';
+      stations.forEach(function(li,i){ setStation(li, focusY, i); });
+      if(cross && Y.length>=5){ var a=Y[3],b=Y[4]; var mid=(a+b)/2; var span=Math.max(50,(b-a)/2); var dd=Math.max(0,1-Math.abs(focusY-mid)/span); cross.style.opacity=dd.toFixed(3); }
+      var lastY=Y.length?Y[Y.length-1]:0;
+      var tail=matchY>lastY?clamp01((focusY-lastY)/(matchY-lastY)):(p>0.85?1:0);
+      paths.forEach(function(pa,i){ pa.style.strokeDashoffset=(pathLens[i]*(1-tail)).toFixed(1); });
+      var spread=(1-tail)*30;
+      if(ringL) ringL.style.transform='translateX('+(-spread).toFixed(2)+'px)';
+      if(ringR) ringR.style.transform='translateX('+(spread).toFixed(2)+'px)';
+      if(core) core.style.opacity=clamp01((tail-0.62)/0.38).toFixed(3);
+      if(lockpulse){ if(!locked && tail>0.95){ locked=true; lockpulse.style.animation='rr-lock 1s cubic-bezier(.2,.7,.3,1) forwards'; } else if(locked && tail<0.5){ locked=false; lockpulse.style.animation='none'; } }
+    }
+    function staticShow(){
+      measure(); initDraw();
+      if(fill) fill.style.height=(matchY||0)+'px';
+      stations.forEach(function(li){
+        var mag=li.querySelector('[data-mag]'); if(mag) mag.style.transform='scale('+(mobile?0.94:0.85)+')';
+        li.querySelectorAll('[data-p]').forEach(function(p){ p.style.strokeDashoffset='0'; });
+        li.querySelectorAll('[data-pf]').forEach(function(p){ p.style.opacity='1'; });
+        var dot=li.querySelector('[data-dot]'); if(dot) dot.style.opacity='0';
+        var disc=li.querySelector('[data-disc]'); if(disc) disc.style.opacity='1';
+        var tx=li.querySelector('[data-stext]'); if(tx){ tx.style.opacity='1'; tx.style.transform='none'; }
+        var ln=li.querySelector('[data-sline]'); if(ln) ln.style.transform='scaleY(1)';
+      });
+      if(cross) cross.style.opacity='1';
+      if(ringL) ringL.style.transform='translateX(0)';
+      if(ringR) ringR.style.transform='translateX(0)';
+      if(core) core.style.opacity='1';
+      paths.forEach(function(p){ p.style.strokeDashoffset='0'; });
+    }
+    function bindInit(){
+      stations.forEach(function(li){ var tx=li.querySelector('[data-stext]'); if(tx) tx.style.opacity='0'; var ln=li.querySelector('[data-sline]'); if(ln) ln.style.transform='scaleY(0)'; });
+      if(cross) cross.style.opacity='0';
+      if(fill) fill.style.height='0px';
+      paths.forEach(function(p,i){ p.style.strokeDashoffset=pathLens[i]; });
+      if(ringL) ringL.style.transform='translateX(-30px)';
+      if(ringR) ringR.style.transform='translateX(30px)';
+      if(core) core.style.opacity='0';
+    }
+    function bind(){
+      gsap.registerPlugin(ScrollTrigger);
+      measure(); initDraw(); bindInit();
+      ScrollTrigger.create({ trigger:wrap, start:'top 66%', end:'bottom 80%', scrub:0.6, onUpdate:function(st){ update(st.progress); }, onRefresh:measure });
+      update(0);
+      if(document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ measure(); if(window.ScrollTrigger) ScrollTrigger.refresh(); }); }
+      var rt=setTimeout(function(){ measure(); if(window.ScrollTrigger) ScrollTrigger.refresh(); }, 600); timers.push(rt);
+    }
+    layout();
+    window.addEventListener('resize', function(){ layout(); measure(); if(window.ScrollTrigger) ScrollTrigger.refresh(); });
+    if(reduce){ staticShow(); return; }
+    if(window.gsap && window.ScrollTrigger){ bind(); }
+    else { staticShow(); var st=Date.now(); var iv=setInterval(function(){ if(window.gsap && window.ScrollTrigger){ clearInterval(iv); bind(); } else if(Date.now()-st>4500){ clearInterval(iv); } }, 150); timers.push(iv); }
+  })();
+})();
+</script>
+<!-- SHARE NUDGE behaviour: native share sheet on mobile, clipboard fallback on desktop. Uses current URL, so it auto-points to whatever domain hosts the page. -->
+<script>
+(function(){
+  function wire(){
+    var url = window.location.href.split('#')[0];
+    var shareText = 'A new way into Europe’s business schools — the right schools reach out to you. Free for students.';
+    document.querySelectorAll('[data-share]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var label = btn.querySelector('[data-share-label]');
+        if(navigator.share){
+          navigator.share({ title: document.title, text: shareText, url: url }).catch(function(){});
+        } else if(navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(url).then(function(){
+            if(label){ var prev = label.textContent; label.textContent = 'Link copied ✓'; setTimeout(function(){ label.textContent = prev; }, 2200); }
+          }).catch(function(){ window.prompt('Copy this link:', url); });
+        } else {
+          window.prompt('Copy this link:', url);
+        }
+      });
+    });
+  }
+  if(document.readyState !== 'loading') wire(); else document.addEventListener('DOMContentLoaded', wire);
+})();
+</script>
+</body>
+</html>
