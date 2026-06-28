@@ -42,7 +42,9 @@
   .rr-in-dark:focus{border-color:#f4f1e8 !important;box-shadow:0 0 0 3px rgba(244,241,232,.18) !important}
   /* normalise <select> so it honours the same padding/height as text inputs (Safari renders native selects shorter), with a custom dropdown arrow */
   select.rr-in,select.rr-in-dark{background-repeat:no-repeat;background-position:right 12px center;background-size:14px}
-  select.rr-in{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231f3d2e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+  .rr-in::placeholder{color:#757575;opacity:1}
+  select.rr-in{color:#757575;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23757575' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+  select.rr-in:has(option:not([value=""]):checked){color:#1a1c18}
   select.rr-in-dark{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23f4f1e8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
   .rr-foot:hover{color:#1f3d2e !important}
   .bhov-ghost:hover{background:#e7ece5 !important}
@@ -122,8 +124,8 @@
       </div>
       <div data-reveal data-reveal-delay="320" style="margin-top:34px">
         <button data-magnetic data-cta="offer" class="bhov" style="border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:15px 26px;border-radius:8px;box-shadow:0 1px 2px 0 rgb(0 0 0/.18);display:inline-flex;align-items:center;gap:12px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Get early access <span style="font-weight:500">&rarr;</span></button>
-        <!-- SOCIAL PROOF — replace 2,300 with the real waitlist count before going live -->
-        <div data-reveal data-reveal-delay="380" style="margin-top:18px;font-size:13.5px;line-height:1.45;color:rgba(244,241,232,.78);font-weight:500">Join <strong style="color:#f4f1e8;font-weight:700">2,300+</strong> future MBA candidates already on the list.</div>
+        <!-- SOCIAL PROOF — keep this number truthful; update as the waitlist grows -->
+        <div data-reveal data-reveal-delay="380" style="margin-top:18px;font-size:13.5px;line-height:1.45;color:rgba(244,241,232,.78);font-weight:500">Join <strong style="color:#f4f1e8;font-weight:700">300+</strong> future MBA candidates already on the list.</div>
       </div>
     </div>
   </header>
@@ -204,7 +206,7 @@
               <div style="display:flex;flex-wrap:wrap;gap:12px">
                 <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 140px;min-width:0">
                   <label for="rr-prog" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Programme</label>
-                  <select id="rr-prog" name="programmeType" class="rr-in" style="width:100%;height:46px;-webkit-appearance:none;appearance:none;border:1px solid #d0cab6;border-radius:8px;padding:0 36px 0 14px;font-size:15px;background-color:#faf8f1;color:#1a1c18;outline:none;transition:border-color .2s,box-shadow .2s">
+                  <select id="rr-prog" name="programmeType" class="rr-in" style="width:100%;height:46px;-webkit-appearance:none;appearance:none;border:1px solid #d0cab6;border-radius:8px;padding:0 36px 0 14px;font-size:15px;background-color:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
                     <option value="" selected>Select</option>
                     <option>Full-time MBA</option>
                     <option>Part-time MBA</option>
@@ -306,7 +308,7 @@
       <div data-reveal data-reveal-delay="170" style="margin-top:12px;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(244,241,232,.74)">Luca &amp; Philip, co-founders</div>
       <p data-reveal data-reveal-delay="200" style="margin:22px 0 0;max-width:54ch;font-size:clamp(15px,1.5vw,18px);line-height:1.55;color:rgba(244,241,232,.88)">Join the first group today. Get the insider Playbook now, and a shot at a one-to-one when we launch.</p>
       <!-- SOCIAL PROOF — keep this number in sync with the hero (use the real waitlist count) -->
-      <div data-reveal data-reveal-delay="220" style="margin-top:16px;font-size:13.5px;line-height:1.45;color:rgba(244,241,232,.78);font-weight:500"><strong style="color:#f4f1e8;font-weight:700">2,300+</strong> future MBA candidates have already joined.</div>
+      <div data-reveal data-reveal-delay="220" style="margin-top:16px;font-size:13.5px;line-height:1.45;color:rgba(244,241,232,.78);font-weight:500"><strong style="color:#f4f1e8;font-weight:700">300+</strong> future MBA candidates have already joined.</div>
       <!-- ACTIVATION ENERGY -->
       <p data-reveal data-reveal-delay="260" style="margin:8px 0 0;font-size:12.5px;line-height:1.5;color:rgba(244,241,232,.6)">Takes about 20 seconds. The only field that matters is your email.</p>
 
