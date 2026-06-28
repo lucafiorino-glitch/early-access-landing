@@ -80,6 +80,7 @@
   .se-lock{display:flex;align-items:center;gap:6px;font-size:11px;color:#6b6a5c;margin-top:11px}
   .se-cap{font-size:13px;line-height:1.55;color:#5e6157;margin:13px 0 0;text-wrap:pretty}
   @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+  @media (max-width:560px){.nav-howit{display:none}}
 </style>
 </head>
 <body>
@@ -94,7 +95,7 @@
       </a>
     </div>
     <div style="display:flex;align-items:center;gap:clamp(14px,2vw,28px)">
-      <a href="#street" data-nav-link data-cta="street" style="font-size:14px;font-weight:500;text-decoration:none;color:#fff;transition:color .4s;letter-spacing:.005em">How it works</a>
+      <a href="#street" data-nav-link data-cta="street" class="nav-howit" style="font-size:14px;font-weight:500;text-decoration:none;color:#fff;transition:color .4s;letter-spacing:.005em">How it works</a>
       <button data-magnetic data-cta="offer" class="bhov" style="border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:14px;padding:11px 18px;border-radius:8px;box-shadow:0 1px 2px 0 rgb(0 0 0/.09);transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Get the free guide</button>
     </div>
   </nav>
@@ -240,7 +241,7 @@
   </section>
 
   <!-- ===== INSIDER NOTE ===== -->
-  <section data-parallax-scope style="position:relative;overflow:hidden;background:#163024;color:#f4f1e8;padding:clamp(64px,9vw,128px) clamp(20px,5vw,72px)">
+  <section data-parallax-scope style="position:relative;overflow:hidden;background:#163024;color:#f4f1e8;padding:clamp(56px,8vw,100px) clamp(20px,5vw,72px)">
     <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(36px,5vw,72px);align-items:center">
       <div data-reveal style="flex:1 1 280px;max-width:380px;min-width:0">
         <div style="position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;background:#0f241b;box-shadow:0 1px 2px 0 rgb(0 0 0/.18),0 8px 10px -1px rgb(0 0 0/.18)">
@@ -257,7 +258,7 @@
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section style="background:#f4f1e8;padding:clamp(64px,9vw,112px) clamp(20px,5vw,72px) clamp(64px,9vw,120px)">
+  <section style="background:#f4f1e8;padding:clamp(56px,8vw,96px) clamp(20px,5vw,72px) clamp(40px,5vw,64px)">
     <div style="max-width:840px;margin:0 auto">
       <h2 data-reveal style="margin:0 0 8px;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(26px,3.4vw,42px)">Questions, answered plainly.</h2>
       <div style="margin-top:28px">
@@ -294,7 +295,7 @@
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(22,48,36,.92),rgba(31,61,46,.66) 55%,rgba(31,61,46,.82));mix-blend-mode:multiply"></div>
     <div style="position:absolute;inset:0;background:rgba(22,48,36,.4)"></div>
-    <div style="position:relative;z-index:2;padding:clamp(72px,11vw,150px) clamp(20px,5vw,72px);max-width:1080px;margin:0 auto">
+    <div style="position:relative;z-index:2;padding:clamp(56px,8vw,104px) clamp(20px,5vw,72px);max-width:1080px;margin:0 auto">
       <div data-reveal style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,232,.7);margin-bottom:18px">Opens soon</div>
       <h2 data-reveal data-reveal-delay="80" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#f4f1e8;font-size:clamp(32px,5vw,64px);line-height:1.04;max-width:18ch;text-wrap:balance">A new way in is almost here. Be first.</h2>
       <p data-reveal data-reveal-delay="130" style="margin:24px 0 0;max-width:52ch;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(17px,1.9vw,22px);line-height:1.4;color:#f4f1e8;text-wrap:pretty">&ldquo;We spent a year comparing schools and writing applications with very little to go on. We&rsquo;re building what we wish we had.&rdquo;</p>
@@ -314,11 +315,11 @@
           <option style="color:#1a1c18">Still deciding</option>
         </select>
         <input type="text" name="country" autocomplete="country-name" placeholder="Country of residence" aria-label="Country of residence" class="rr-in-dark" style="flex:1 1 150px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
-        <button data-magnetic data-submit type="submit" class="bhov-cream" style="flex:1 1 100%;border:none;cursor:pointer;background:#f4f1e8;color:#1f3d2e;font-weight:700;font-size:15px;padding:15px 22px;border-radius:8px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Send me the free guide</button>
         <label style="flex:1 1 100%;display:flex;gap:10px;align-items:flex-start;cursor:pointer">
           <input type="checkbox" name="marketing" style="margin-top:2px;width:16px;height:16px;accent-color:#f4f1e8;flex:none;cursor:pointer">
           <span style="font-size:11.5px;line-height:1.5;color:rgba(244,241,232,.78)">Also send me occasional Macademia launch updates (optional). See the <a href="legal.html#privacy" target="_blank" rel="noopener" style="color:#f4f1e8;text-decoration:underline;text-underline-offset:2px">Privacy Policy</a>.</span>
         </label>
+        <button data-magnetic data-submit type="submit" class="bhov-cream" style="flex:1 1 100%;border:none;cursor:pointer;background:#f4f1e8;color:#1f3d2e;font-weight:700;font-size:15px;padding:15px 22px;border-radius:8px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Send me the free guide</button>
         <p data-error role="alert" style="display:none;flex:1 1 100%;margin:0;font-size:12.5px;line-height:1.5;color:#ffd9d9">We couldn&rsquo;t save your request. Please try again in a moment.</p>
       </form>
       <div data-success style="display:none;margin-top:34px;max-width:560px;border:1px solid rgba(244,241,232,.3);background:rgba(244,241,232,.08);border-radius:8px;padding:24px;gap:14px;align-items:center">
