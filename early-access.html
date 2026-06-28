@@ -118,7 +118,7 @@
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,48,36,.62) 0%,rgba(22,48,36,0) 38%);pointer-events:none"></div>
 
     <div style="position:relative;z-index:5;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:96px clamp(20px,4vw,48px) 48px;max-width:1120px">
-      <div data-reveal style="margin:0 0 18px;font-size:clamp(11px,1.1vw,13px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,241,232,.8)">For MBA, Master in Management, Master in Finance &amp; other European business master&rsquo;s</div>
+      <div data-reveal style="margin:0 0 18px;font-size:clamp(11px,1.1vw,13px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,241,232,.8)">For MBA, Master in Management, Master in Finance &amp; other European masters</div>
       <h1 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.018em;color:#f4f1e8;font-size:clamp(44px,8.6vw,128px);line-height:.98;max-width:15ch;text-wrap:balance;text-shadow:0 2px 40px rgba(0,0,0,.22)">Let the right schools find you first.</h1>
       <p data-reveal data-reveal-delay="140" style="margin:28px 0 0;max-width:58ch;font-size:clamp(16px,1.6vw,20px);line-height:1.55;color:rgba(244,241,232,.92);font-weight:400">Applying to business school takes time, money and a lot of guesswork. Build one profile, compare European programmes that match your goals, and, when the network opens, let schools that fit ask to connect. You choose whether to reply.</p>
       <div data-reveal data-reveal-delay="220" style="margin:26px 0 0;display:flex;align-items:center;gap:16px;max-width:52ch">
@@ -193,35 +193,23 @@
 
             <form data-form style="margin-top:16px;display:flex;flex-direction:column;gap:12px">
               <div style="display:flex;flex-wrap:wrap;gap:12px">
-                <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 140px;min-width:0">
-                  <label for="rr-fn" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">First name</label>
-                  <input id="rr-fn" name="firstName" type="text" autocomplete="given-name" placeholder="Alex" class="rr-in" style="width:100%;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
-                </div>
-                <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 140px;min-width:0">
-                  <label for="rr-em" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Email address</label>
-                  <input id="rr-em" name="email" type="email" required autocomplete="email" placeholder="name@example.com" class="rr-in" style="width:100%;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
-                </div>
+                <input id="rr-fn" name="firstName" type="text" autocomplete="given-name" placeholder="First name" aria-label="First name" class="rr-in" style="flex:1 1 140px;min-width:0;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+                <input id="rr-em" name="email" type="email" required autocomplete="email" placeholder="Email address" aria-label="Email address" class="rr-in" style="flex:1 1 140px;min-width:0;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
               </div>
               <div style="display:flex;flex-wrap:wrap;gap:12px">
-                <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 140px;min-width:0">
-                  <label for="rr-prog" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Programme</label>
-                  <select id="rr-prog" name="programmeType" class="rr-in" style="width:100%;height:46px;-webkit-appearance:none;appearance:none;border:1px solid #d0cab6;border-radius:8px;padding:0 36px 0 14px;font-size:15px;background-color:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
-                    <option value="" selected>Select</option>
-                    <option>Full-time MBA</option>
-                    <option>Part-time MBA</option>
-                    <option>Master in Management</option>
-                    <option>Master in Finance</option>
-                    <option>Still deciding</option>
-                  </select>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 140px;min-width:0">
-                  <label for="rr-ctry" style="font-size:10px;font-weight:600;letter-spacing:.07em;color:#6b6a5c;text-transform:uppercase">Country of residence</label>
-                  <input id="rr-ctry" name="country" type="text" autocomplete="country-name" placeholder="e.g. India" class="rr-in" style="width:100%;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
-                </div>
+                <select id="rr-prog" name="programmeType" aria-label="Programme" class="rr-in" style="flex:1 1 140px;min-width:0;height:46px;-webkit-appearance:none;appearance:none;border:1px solid #d0cab6;border-radius:8px;padding:0 36px 0 14px;font-size:15px;background-color:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+                  <option value="" selected>Programme</option>
+                  <option>Full-time MBA</option>
+                  <option>Part-time MBA</option>
+                  <option>Master in Management</option>
+                  <option>Master in Finance</option>
+                  <option>Still deciding</option>
+                </select>
+                <input id="rr-ctry" name="country" type="text" autocomplete="country-name" placeholder="Country of residence" aria-label="Country of residence" class="rr-in" style="flex:1 1 140px;min-width:0;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
               </div>
               <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">
                 <input type="checkbox" name="marketing" style="margin-top:2px;width:16px;height:16px;accent-color:#1f3d2e;flex:none;cursor:pointer">
-                <span style="font-size:11.5px;line-height:1.5;color:#6b6a5c">Also send me occasional Macademia launch updates (optional).</span>
+                <span style="font-size:11.5px;line-height:1.5;color:#6b6a5c">Send me Macademia launch updates (optional).</span>
               </label>
               <button data-magnetic data-submit type="submit" class="bhov" style="margin-top:4px;border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:14px 18px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Send me the free guide</button>
               <p data-error role="alert" style="display:none;margin:0;font-size:12.5px;line-height:1.5;color:#9a2a2a">We couldn&rsquo;t save your request. Please try again in a moment.</p>
@@ -305,7 +293,7 @@
 
       <form data-form style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;max-width:560px">
         <input type="text" name="firstName" autocomplete="given-name" placeholder="First name" aria-label="First name" class="rr-in-dark" style="flex:1 1 150px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
-        <input type="email" name="email" required autocomplete="email" placeholder="Email" aria-label="Email" class="rr-in-dark" style="flex:2 1 200px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
+        <input type="email" name="email" required autocomplete="email" placeholder="Email address" aria-label="Email address" class="rr-in-dark" style="flex:2 1 200px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
         <select name="programmeType" aria-label="Programme type" class="rr-in-dark" style="flex:1 1 150px;min-width:0;height:50px;-webkit-appearance:none;appearance:none;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:0 38px 0 16px;font-size:15px;background-color:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
           <option value="" selected style="color:#1a1c18">Programme</option>
           <option style="color:#1a1c18">Full-time MBA</option>
@@ -317,7 +305,7 @@
         <input type="text" name="country" autocomplete="country-name" placeholder="Country of residence" aria-label="Country of residence" class="rr-in-dark" style="flex:1 1 150px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
         <label style="flex:1 1 100%;display:flex;gap:10px;align-items:flex-start;cursor:pointer">
           <input type="checkbox" name="marketing" style="margin-top:2px;width:16px;height:16px;accent-color:#f4f1e8;flex:none;cursor:pointer">
-          <span style="font-size:11.5px;line-height:1.5;color:rgba(244,241,232,.78)">Also send me occasional Macademia launch updates (optional). See the <a href="legal.html#privacy" target="_blank" rel="noopener" style="color:#f4f1e8;text-decoration:underline;text-underline-offset:2px">Privacy Policy</a>.</span>
+          <span style="font-size:11.5px;line-height:1.5;color:rgba(244,241,232,.78)">Send me Macademia launch updates (optional). See the <a href="legal.html#privacy" target="_blank" rel="noopener" style="color:#f4f1e8;text-decoration:underline;text-underline-offset:2px">Privacy Policy</a>.</span>
         </label>
         <button data-magnetic data-submit type="submit" class="bhov-cream" style="flex:1 1 100%;border:none;cursor:pointer;background:#f4f1e8;color:#1f3d2e;font-weight:700;font-size:15px;padding:15px 22px;border-radius:8px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Send me the free guide</button>
         <p data-error role="alert" style="display:none;flex:1 1 100%;margin:0;font-size:12.5px;line-height:1.5;color:#ffd9d9">We couldn&rsquo;t save your request. Please try again in a moment.</p>
