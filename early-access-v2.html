@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Macademia — Early access for MBA, MiM and MiF students</title>
-<meta name="description" content="Compare European MBA, MiM and MiF programmes, build a clearer shortlist, and get the free Business School Application Playbook. Free for students." />
+<title>Macademia — Get into your dream master's or MBA with confidence</title>
+<meta name="description" content="Which school is right for you? Is your CV strong enough? How will you fund it? Macademia helps you compare universities, improve your application, find scholarships and get personalized guidance — all in one place. Free for students worldwide." />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Choose your European business school with more confidence" />
-<meta property="og:description" content="Compare programmes, build a shortlist and get a free guide for MBA, MiM and MiF applicants." />
+<meta property="og:title" content="Get into your dream master's or MBA with confidence" />
+<meta property="og:description" content="Compare universities, improve your application, find scholarships and get personalized guidance — all in one place. Free for students." />
 <meta property="og:image" content="img/hero-1.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/png" href="img/favicon.png" />
@@ -48,6 +48,14 @@
   select.rr-in:has(option:not([value=""]):checked){color:#1a1c18}
   select.rr-in-dark{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23f4f1e8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
   .rr-foot:hover{color:#1f3d2e !important}
+  /* multi-select country chips */
+  .rr-chip{display:inline-flex;align-items:center;border:1px solid #d0cab6;border-radius:999px;padding:7px 13px;font-size:13px;line-height:1;color:#5e6157;background:#faf8f1;cursor:pointer;transition:background .15s,color .15s,border-color .15s;user-select:none}
+  .rr-chip input{position:absolute;opacity:0;width:1px;height:1px}
+  .rr-chip:has(input:checked){background:#1f3d2e;color:#f4f1e8;border-color:#1f3d2e}
+  .rr-chip:has(input:focus-visible){box-shadow:0 0 0 3px rgba(31,61,46,.3)}
+  .rr-chip-d{border-color:rgba(244,241,232,.4);background:rgba(244,241,232,.08);color:rgba(244,241,232,.85)}
+  .rr-chip-d:has(input:checked){background:#f4f1e8;color:#1f3d2e;border-color:#f4f1e8}
+  .rr-chip-d:has(input:focus-visible){box-shadow:0 0 0 3px rgba(244,241,232,.25)}
   .bhov-ghost:hover{background:#e7ece5 !important}
   @keyframes rr-matchpulse{0%{transform:translate(-50%,0) scale(1);opacity:.5}100%{transform:translate(-50%,0) scale(2.5);opacity:0}}
   @keyframes rr-heroword{0%{opacity:0;transform:translateY(34px)}100%{opacity:.96;transform:translateY(0)}}
@@ -96,7 +104,7 @@
     </div>
     <div style="display:flex;align-items:center;gap:clamp(14px,2vw,28px)">
       <a href="#street" data-nav-link data-cta="street" class="nav-howit" style="font-size:14px;font-weight:500;text-decoration:none;color:#fff;transition:color .4s;letter-spacing:.005em">How it works</a>
-      <button data-magnetic data-cta="offer" class="bhov" style="border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:14px;padding:11px 18px;border-radius:8px;box-shadow:0 1px 2px 0 rgb(0 0 0/.09);transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Get the free guide</button>
+      <button data-magnetic data-cta="offer" class="bhov" style="border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:14px;padding:11px 18px;border-radius:8px;box-shadow:0 1px 2px 0 rgb(0 0 0/.09);transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Get the free checklist</button>
     </div>
   </nav>
 
@@ -119,28 +127,51 @@
 
     <div style="position:relative;z-index:5;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:96px clamp(20px,4vw,48px) 48px;max-width:1120px">
       <div data-reveal style="margin:0 0 18px;font-size:clamp(11px,1.1vw,13px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(244,241,232,.8)">For MBA, Master in Management, Master in Finance &amp; other European masters</div>
-      <h1 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.018em;color:#f4f1e8;font-size:clamp(44px,8.6vw,128px);line-height:.98;max-width:15ch;text-wrap:balance;text-shadow:0 2px 40px rgba(0,0,0,.22)">Let the right schools find you first.</h1>
-      <p data-reveal data-reveal-delay="140" style="margin:28px 0 0;max-width:58ch;font-size:clamp(16px,1.6vw,20px);line-height:1.55;color:rgba(244,241,232,.92);font-weight:400">Applying to business school takes time, money and a lot of guesswork. Build one profile, compare European programmes that match your goals, and, when the network opens, let schools that fit ask to connect. You choose whether to reply.</p>
+      <h1 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.018em;color:#f4f1e8;font-size:clamp(40px,7.4vw,112px);line-height:1.0;max-width:16ch;text-wrap:balance;text-shadow:0 2px 40px rgba(0,0,0,.22)">Get into your dream master&rsquo;s or MBA with confidence.</h1>
+      <p data-reveal data-reveal-delay="140" style="margin:26px 0 0;max-width:60ch;font-size:clamp(16px,1.6vw,20px);line-height:1.55;color:rgba(244,241,232,.92);font-weight:400">Which school is right for you? Is your CV strong enough? How will you fund it? Macademia helps you answer the questions every applicant worries about &mdash; compare universities, improve your application, find scholarships and get personalized guidance, all in one place.</p>
       <div data-reveal data-reveal-delay="220" style="margin:26px 0 0;display:flex;align-items:center;gap:16px;max-width:52ch">
         <span style="flex:none;width:34px;height:1px;background:rgba(244,241,232,.5)"></span>
-        <span style="font-size:clamp(14px,1.3vw,17px);font-weight:500;line-height:1.45;color:rgba(244,241,232,.85)">Free for students. Your details stay private: a school can reach you only if you choose to connect.</span>
+        <span style="font-size:clamp(14px,1.3vw,17px);font-weight:500;line-height:1.45;color:rgba(244,241,232,.85)">Free for students worldwide. Your data stays private and GDPR-compliant.</span>
       </div>
       <div data-reveal data-reveal-delay="320" style="margin-top:34px">
-        <button data-magnetic data-cta="offer" class="bhov" style="border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:15px 26px;border-radius:8px;box-shadow:0 1px 2px 0 rgb(0 0 0/.18);display:inline-flex;align-items:center;gap:12px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Get the free guide <span style="font-weight:500">&rarr;</span></button>
+        <button data-magnetic data-cta="offer" class="bhov" style="border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:15px 26px;border-radius:8px;box-shadow:0 1px 2px 0 rgb(0 0 0/.18);display:inline-flex;align-items:center;gap:12px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Get your free application checklist <span style="font-weight:500">&rarr;</span></button>
         <div data-reveal data-reveal-delay="380" style="margin-top:18px;font-size:13.5px;line-height:1.45;color:rgba(244,241,232,.78);font-weight:500">Join <strong style="color:#f4f1e8;font-weight:700">300+</strong> students already on the early-access list.</div>
       </div>
     </div>
   </header>
 
-  <!-- ===== WHAT THIS IS ===== -->
-  <section id="street" style="background:#f4f1e8;padding:clamp(64px,9vw,112px) clamp(20px,5vw,64px)">
-    <div style="max-width:880px;margin:0 auto;text-align:center">
-      <div data-reveal style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6b6a5c;margin-bottom:16px">What this is</div>
-      <h2 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(28px,4.4vw,52px);line-height:1.05;text-wrap:balance">Keep your own search. The right schools find you too.</h2>
-      <p data-reveal data-reveal-delay="120" style="margin:20px auto 0;max-width:56ch;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#5e6157;text-wrap:pretty">Tell us what matters to you and build one profile. Keep your own search going. When the network opens, participating schools can look for candidates who fit and ask to connect. You decide whether to reply, and your contact details are not shared unless you accept.</p>
-      <div data-reveal data-reveal-delay="180" style="margin:26px auto 0;display:inline-flex;align-items:center;gap:12px;max-width:60ch"><span style="flex:none;width:28px;height:1px;background:#cdc7b4"></span><span style="font-size:13px;line-height:1.5;color:#6b6a5c;font-weight:500">Informed by people who have worked in European business-school admissions and careers.</span><span style="flex:none;width:28px;height:1px;background:#cdc7b4"></span></div>
+  <!-- ===== TRUST STRIP ===== -->
+  <section style="background:#ece8db;border-bottom:1px solid #ded9c9;padding:16px clamp(20px,5vw,48px)">
+    <div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 26px;text-align:center">
+      <span style="font-size:12.5px;font-weight:600;letter-spacing:.01em;color:#1f3d2e">Created with recruitment &amp; admissions expertise</span>
+      <span aria-hidden="true" style="color:#bcb39a">&middot;</span>
+      <span style="font-size:12.5px;font-weight:600;letter-spacing:.01em;color:#1f3d2e">Built on insights from business schools</span>
+      <span aria-hidden="true" style="color:#bcb39a">&middot;</span>
+      <span style="font-size:12.5px;font-weight:600;letter-spacing:.01em;color:#1f3d2e">GDPR-compliant</span>
+      <span aria-hidden="true" style="color:#bcb39a">&middot;</span>
+      <span style="font-size:12.5px;font-weight:600;letter-spacing:.01em;color:#1f3d2e">Trusted by students applying worldwide</span>
     </div>
+  </section>
 
+  <!-- ===== PROBLEM → SOLUTION ===== -->
+  <section id="street" style="background:#f4f1e8;padding:clamp(56px,8vw,104px) clamp(20px,5vw,64px)">
+    <div style="max-width:1080px;margin:0 auto">
+      <div style="max-width:720px;margin:0 auto;text-align:center">
+        <div data-reveal style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6b6a5c;margin-bottom:16px">The questions every applicant asks</div>
+        <h2 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(28px,4.4vw,50px);line-height:1.06;text-wrap:balance">Applying shouldn&rsquo;t feel like guessing.</h2>
+        <p data-reveal data-reveal-delay="120" style="margin:18px auto 0;max-width:56ch;font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#5e6157;text-wrap:pretty">Macademia brings the whole decision into one place &mdash; so you can choose, prepare and apply with a clear head.</p>
+      </div>
+      <div class="se-wrap" style="margin-top:clamp(36px,5vw,56px)">
+        <div class="se-grid">
+          <div data-reveal class="se-card"><h3 class="se-title" style="margin:0 0 8px">Which university is right for me?</h3><p class="se-cap" style="margin:0">Compare programmes side by side on what matters to you &mdash; fit, cost and career outcomes, not just rankings.</p></div>
+          <div data-reveal data-reveal-delay="60" class="se-card"><h3 class="se-title" style="margin:0 0 8px">Am I wasting thousands on the wrong master&rsquo;s?</h3><p class="se-cap" style="margin:0">See the real costs and trade-offs of each programme before you commit time and money.</p></div>
+          <div data-reveal data-reveal-delay="120" class="se-card"><h3 class="se-title" style="margin:0 0 8px">Is my CV strong enough?</h3><p class="se-cap" style="margin:0">Get clear guidance to sharpen your application and show schools what they look for.</p></div>
+          <div data-reveal class="se-card"><h3 class="se-title" style="margin:0 0 8px">How do I find scholarships?</h3><p class="se-cap" style="margin:0">Discover funding and scholarships you might otherwise miss.</p></div>
+          <div data-reveal data-reveal-delay="60" class="se-card"><h3 class="se-title" style="margin:0 0 8px">When are the deadlines?</h3><p class="se-cap" style="margin:0">Keep every application deadline in one place, so nothing slips through the cracks.</p></div>
+          <div data-reveal data-reveal-delay="120" class="se-card"><h3 class="se-title" style="margin:0 0 8px">Can someone review my application?</h3><p class="se-cap" style="margin:0">Get personalized guidance from people who understand how admissions decisions are made.</p></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ===== OFFER RAIL ===== -->
@@ -148,15 +179,15 @@
     <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(40px,5vw,72px);align-items:flex-start">
 
       <div style="flex:2 1 460px;min-width:0">
-        <div data-reveal style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6b6a5c;margin-bottom:16px">Inside the free Playbook</div>
-        <h2 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(28px,3.8vw,50px);line-height:1.04;max-width:16ch;text-wrap:balance">Ten decisions to get right before you apply.</h2>
-        <p data-reveal data-reveal-delay="120" style="margin:24px 0 0;max-width:52ch;font-size:clamp(15px,1.35vw,17.5px);line-height:1.62;color:#5e6157">A practical guide to choosing, shortlisting and applying to European MBA, MiM and MiF programmes: what schools look for, and where strong applications lose clarity.</p>
+        <div data-reveal style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6b6a5c;margin-bottom:16px">Inside the free checklist</div>
+        <h2 data-reveal data-reveal-delay="60" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#1f3d2e;font-size:clamp(28px,3.8vw,50px);line-height:1.04;max-width:16ch;text-wrap:balance">The checklist that gets you application-ready.</h2>
+        <p data-reveal data-reveal-delay="120" style="margin:24px 0 0;max-width:52ch;font-size:clamp(15px,1.35vw,17.5px);line-height:1.62;color:#5e6157">A practical, step-by-step checklist for choosing, funding and applying to master&rsquo;s and MBA programmes in Europe &mdash; so nothing important slips before your deadlines.</p>
 
         <div style="margin-top:40px;display:flex;flex-direction:column">
-          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">01</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Starting too late</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">By the time you apply, much of the class is already taking shape. The calendar decides more than most people realise.</div></div></div>
-          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">02</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Choosing a school on rankings alone</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">The top of a list is rarely the right fit for you.</div></div></div>
-          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">03</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">One application, reused everywhere</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">Committees can tell, and it quietly costs you.</div></div></div>
-          <div data-reveal style="margin-top:8px;padding:18px 20px;border-top:1px solid #ded9c9;background:rgba(31,61,46,.04);border-radius:0 0 6px 6px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(15px,1.5vw,18px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Seven more inside the Playbook</div><div style="margin-top:4px;font-size:13.5px;line-height:1.5;color:#5e6157">including the one most strong applicants never see coming.</div></div>
+          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">01</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Choose schools that actually fit you</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">How to compare on fit, cost and career outcomes &mdash; not rankings alone.</div></div></div>
+          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">02</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Make your application stand out</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">What committees look for, and how to show it in your CV and essays.</div></div></div>
+          <div data-reveal style="display:flex;gap:18px;padding:20px 0;border-top:1px solid #ded9c9"><span style="flex:none;font-size:12px;font-weight:600;color:#1f3d2e;padding-top:4px;font-variant-numeric:tabular-nums lining-nums">03</span><div style="border-left:3px solid #1f3d2e;padding-left:18px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(17px,1.6vw,21px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Fund it with scholarships</div><div style="margin-top:5px;font-size:13.5px;line-height:1.5;color:#5e6157">Where the funding is, and how to ask for it.</div></div></div>
+          <div data-reveal style="margin-top:8px;padding:18px 20px;border-top:1px solid #ded9c9;background:rgba(31,61,46,.04);border-radius:0 0 6px 6px"><div style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(15px,1.5vw,18px);font-weight:600;color:#1f3d2e;letter-spacing:-0.008em">Plus deadlines, interviews, visas and more</div><div style="margin-top:4px;font-size:13.5px;line-height:1.5;color:#5e6157">The full checklist, free, the moment you confirm your email.</div></div>
           <div style="border-top:1px solid #ded9c9"></div>
         </div>
       </div>
@@ -168,17 +199,17 @@
             <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(22,48,36,.7),rgba(31,61,46,.2));mix-blend-mode:multiply"></div>
             <img src="img/mac-mark.png" alt="" aria-hidden="true" width="246" height="191" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-62%);height:62px;width:auto;filter:brightness(0) invert(1);opacity:.94">
             <div style="position:absolute;left:18px;bottom:14px">
-              <div style="font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,232,.86)">The Playbook &middot; PDF</div>
+              <div style="font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,232,.86)">The Checklist &middot; PDF</div>
             </div>
           </div>
 
           <div style="padding:24px">
-            <h3 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px;letter-spacing:-0.012em;color:#1f3d2e;line-height:1.1">Get the free guide.</h3>
+            <h3 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:24px;letter-spacing:-0.012em;color:#1f3d2e;line-height:1.1">Get the free checklist.</h3>
             <p style="margin:10px 0 0;font-size:13.5px;line-height:1.5;color:#5e6157">Here is exactly what you are signing up for:</p>
             <div style="margin-top:14px;display:flex;flex-direction:column;gap:11px">
               <div style="display:flex;gap:12px;align-items:baseline">
                 <span style="flex:none;width:64px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#1f3d2e">Now</span>
-                <span style="font-size:13px;line-height:1.5;color:#5e6157">The Business School Application Playbook (PDF), after you confirm your email.</span>
+                <span style="font-size:13px;line-height:1.5;color:#5e6157">The Application Checklist (PDF), after you confirm your email.</span>
               </div>
               <div style="display:flex;gap:12px;align-items:baseline">
                 <span style="flex:none;width:64px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#1f3d2e">At launch</span>
@@ -206,21 +237,41 @@
                   <option>Master in Finance</option>
                   <option>Still deciding</option>
                 </select>
-                <input id="rr-ctry" name="country" type="text" autocomplete="country-name" placeholder="Country of residence" aria-label="Country of residence" class="rr-in" style="flex:1 1 140px;min-width:0;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+                <select id="rr-yr" name="intakeYear" aria-label="When do you plan to start?" class="rr-in" style="flex:1 1 140px;min-width:0;height:46px;-webkit-appearance:none;appearance:none;border:1px solid #d0cab6;border-radius:8px;padding:0 36px 0 14px;font-size:15px;background-color:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+                  <option value="" selected>When do you start?</option>
+                  <option>2027</option>
+                  <option>2028</option>
+                  <option>2029</option>
+                  <option>Unsure</option>
+                </select>
+              </div>
+              <input id="rr-ctry" name="country" type="text" autocomplete="country-name" placeholder="Country of residence" aria-label="Country of residence" class="rr-in" style="width:100%;border:1px solid #d0cab6;border-radius:8px;padding:12px 14px;font-size:15px;background:#faf8f1;outline:none;transition:border-color .2s,box-shadow .2s">
+              <div>
+                <div style="font-size:11.5px;line-height:1.4;color:#6b6a5c;margin-bottom:9px">Which countries are you interested in studying in?</div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <label class="rr-chip"><input type="checkbox" name="countries" value="France">France</label>
+                  <label class="rr-chip"><input type="checkbox" name="countries" value="Germany">Germany</label>
+                  <label class="rr-chip"><input type="checkbox" name="countries" value="Netherlands">Netherlands</label>
+                  <label class="rr-chip"><input type="checkbox" name="countries" value="Spain">Spain</label>
+                  <label class="rr-chip"><input type="checkbox" name="countries" value="Italy">Italy</label>
+                  <label class="rr-chip"><input type="checkbox" name="countries" value="Switzerland">Switzerland</label>
+                  <label class="rr-chip"><input type="checkbox" name="countries" value="UK">UK</label>
+                  <label class="rr-chip"><input type="checkbox" name="countries" value="Other">Other / open</label>
+                </div>
               </div>
               <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer">
                 <input type="checkbox" name="marketing" style="margin-top:2px;width:16px;height:16px;accent-color:#1f3d2e;flex:none;cursor:pointer">
                 <span style="font-size:11.5px;line-height:1.5;color:#6b6a5c">Send me Macademia launch updates (optional).</span>
               </label>
-              <button data-magnetic data-submit type="submit" class="bhov" style="margin-top:4px;border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:14px 18px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Send me the free guide</button>
+              <button data-magnetic data-submit type="submit" class="bhov" style="margin-top:4px;border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:14px 18px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Send me the free checklist</button>
               <p data-error role="alert" style="display:none;margin:0;font-size:12.5px;line-height:1.5;color:#9a2a2a">We couldn&rsquo;t save your request. Please try again in a moment.</p>
-              <p style="margin:2px 0 0;font-size:12px;line-height:1.5;color:#5e6157;text-align:center">We&rsquo;ll email a link to confirm. Your guide arrives right after.</p>
+              <p style="margin:2px 0 0;font-size:12px;line-height:1.5;color:#5e6157;text-align:center">We&rsquo;ll email a link to confirm. Your checklist arrives right after.</p>
               <p style="margin:0;font-size:11.5px;line-height:1.5;color:#6b6a5c;text-align:center">Read our <a href="legal.html#privacy" target="_blank" rel="noopener" style="color:#1f3d2e;text-decoration:underline;text-underline-offset:2px">Privacy Policy</a>. Unsubscribe anytime.</p>
             </form>
             <div data-success style="display:none;margin-top:20px;border:1px solid #ded9c9;background:#faf8f1;border-radius:8px;padding:24px 20px;text-align:center">
               <div style="width:44px;height:44px;border-radius:999px;background:rgba(46,107,69,.13);color:#2e6b45;display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e6b45" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13l5 5L20 7"/></svg></div>
               <div style="font-family:'Source Serif 4',Georgia,serif;font-size:21px;font-weight:600;color:#1f3d2e;letter-spacing:-0.01em">Check your inbox to confirm.</div>
-              <p style="margin:8px 0 0;font-size:13.5px;line-height:1.55;color:#5e6157">We&rsquo;ve sent a confirmation link to <span data-success-email style="color:#1f3d2e;font-weight:600">your email</span>. Open it and select &ldquo;Confirm&rdquo; to receive your guide.</p>
+              <p style="margin:8px 0 0;font-size:13.5px;line-height:1.55;color:#5e6157">We&rsquo;ve sent a confirmation link to <span data-success-email style="color:#1f3d2e;font-weight:600">your email</span>. Open it and select &ldquo;Confirm&rdquo; to receive your checklist.</p>
               <p style="margin:10px 0 0;font-size:12.5px;line-height:1.5;color:#6b6a5c">No email yet? Check Promotions, Spam and Junk, or wait a moment.</p>
             </div>
           </div>
@@ -256,21 +307,21 @@
             <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(17px,1.7vw,21px);color:#1f3d2e;letter-spacing:-0.008em">Is Macademia free for students?</span>
             <span data-faq-plus style="flex:none;font-size:20px;font-weight:400;color:#1f3d2e;transition:transform .25s cubic-bezier(.2,.7,.3,1);transform:rotate(0deg)">+</span>
           </button>
-          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">Yes. Macademia is free for students. There is nothing to pay to receive the guide or to join early access.</p>
+          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">Yes. Macademia is free for students. There is nothing to pay to receive the checklist or to join early access.</p>
         </div>
         <div data-faq style="border-top:1px solid #ded9c9">
           <button data-faq-btn aria-expanded="false" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px">
             <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(17px,1.7vw,21px);color:#1f3d2e;letter-spacing:-0.008em">What is available now, and what comes later?</span>
             <span data-faq-plus style="flex:none;font-size:20px;font-weight:400;color:#1f3d2e;transition:transform .25s cubic-bezier(.2,.7,.3,1);transform:rotate(0deg)">+</span>
           </button>
-          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">Now: the free Business School Application Playbook, sent after you confirm your email. Later: when the candidate network opens, participating schools can ask to connect with candidates who fit. You decide whether to reply, and your contact details are not shared unless you accept.</p>
+          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">Now: the free Application Checklist, sent after you confirm your email. Later: when the candidate network opens, participating schools can ask to connect with candidates who fit. You decide whether to reply, and your contact details are not shared unless you accept.</p>
         </div>
         <div data-faq style="border-top:1px solid #ded9c9">
           <button data-faq-btn aria-expanded="false" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px">
             <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:clamp(17px,1.7vw,21px);color:#1f3d2e;letter-spacing:-0.008em">What do you do with my data?</span>
             <span data-faq-plus style="flex:none;font-size:20px;font-weight:400;color:#1f3d2e;transition:transform .25s cubic-bezier(.2,.7,.3,1);transform:rotate(0deg)">+</span>
           </button>
-          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">We use your email to send the guide and, only if you opt in, occasional launch updates. We never sell your data, you can unsubscribe from any email, and you can read the full details in our Privacy Policy.</p>
+          <p data-faq-a style="display:none;margin:0;padding:0 2px 24px;max-width:64ch;font-size:14.5px;line-height:1.62;color:#5e6157">We use your email to send the checklist and, only if you opt in, occasional launch updates. We never sell your data, you can unsubscribe from any email, and you can read the full details in our Privacy Policy.</p>
         </div>
         <div style="border-top:1px solid #ded9c9"></div>
       </div>
@@ -288,9 +339,9 @@
       <img data-reveal src="img/mac-mark.png" alt="" aria-hidden="true" width="246" height="191" style="height:52px;width:auto;display:block;margin:0 0 22px;filter:brightness(0) invert(1);opacity:.96">
       <div data-reveal data-reveal-delay="40" style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,232,.7);margin-bottom:18px">Opens soon</div>
       <h2 data-reveal data-reveal-delay="80" style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:600;letter-spacing:-0.012em;color:#f4f1e8;font-size:clamp(32px,5vw,64px);line-height:1.04;max-width:18ch;text-wrap:balance">A new way in is almost here. Be first.</h2>
-      <p data-reveal data-reveal-delay="130" style="margin:24px 0 0;max-width:52ch;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(17px,1.9vw,22px);line-height:1.4;color:#f4f1e8;text-wrap:pretty">&ldquo;We spent a year comparing schools and writing applications with very little to go on. We&rsquo;re building what we wish we had.&rdquo;</p>
+      <p data-reveal data-reveal-delay="130" style="margin:24px 0 0;max-width:52ch;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(17px,1.9vw,22px);line-height:1.4;color:#f4f1e8;text-wrap:pretty">&ldquo;We went through this ourselves &mdash; the endless tabs, the guesswork, the silence after hitting submit. We&rsquo;re building what we wish we&rsquo;d had.&rdquo;</p>
       <div data-reveal data-reveal-delay="170" style="margin-top:12px;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(244,241,232,.74)">Luca &amp; Philip, co-founders</div>
-      <p data-reveal data-reveal-delay="200" style="margin:22px 0 0;max-width:54ch;font-size:clamp(15px,1.5vw,18px);line-height:1.55;color:rgba(244,241,232,.88)">Join the early-access list today. Get the free guide now, and an optional chance at a 1:1 when we launch.</p>
+      <p data-reveal data-reveal-delay="200" style="margin:22px 0 0;max-width:54ch;font-size:clamp(15px,1.5vw,18px);line-height:1.55;color:rgba(244,241,232,.88)">Join the early-access list today. Get the free checklist now, and an optional chance at a 1:1 when we launch.</p>
       <div data-reveal data-reveal-delay="220" style="margin-top:16px;font-size:13.5px;line-height:1.45;color:rgba(244,241,232,.78);font-weight:500"><strong style="color:#f4f1e8;font-weight:700">300+</strong> students have already joined the early-access list.</div>
 
       <form data-form style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;max-width:560px">
@@ -304,19 +355,39 @@
           <option style="color:#1a1c18">Master in Finance</option>
           <option style="color:#1a1c18">Still deciding</option>
         </select>
-        <input type="text" name="country" autocomplete="country-name" placeholder="Country of residence" aria-label="Country of residence" class="rr-in-dark" style="flex:1 1 150px;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
+        <select name="intakeYear" aria-label="When do you plan to start?" class="rr-in-dark" style="flex:1 1 150px;min-width:0;height:50px;-webkit-appearance:none;appearance:none;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:0 38px 0 16px;font-size:15px;background-color:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
+          <option value="" selected style="color:#1a1c18">When do you start?</option>
+          <option style="color:#1a1c18">2027</option>
+          <option style="color:#1a1c18">2028</option>
+          <option style="color:#1a1c18">2029</option>
+          <option style="color:#1a1c18">Unsure</option>
+        </select>
+        <input type="text" name="country" autocomplete="country-name" placeholder="Country of residence" aria-label="Country of residence" class="rr-in-dark" style="flex:1 1 100%;min-width:0;border:1px solid rgba(244,241,232,.4);border-radius:8px;padding:14px 16px;font-size:15px;background:rgba(244,241,232,.08);color:#f4f1e8;outline:none;transition:border-color .2s,box-shadow .2s">
+        <div style="flex:1 1 100%">
+          <div style="font-size:11.5px;line-height:1.4;color:rgba(244,241,232,.7);margin-bottom:9px">Which countries are you interested in studying in?</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <label class="rr-chip rr-chip-d"><input type="checkbox" name="countries" value="France">France</label>
+            <label class="rr-chip rr-chip-d"><input type="checkbox" name="countries" value="Germany">Germany</label>
+            <label class="rr-chip rr-chip-d"><input type="checkbox" name="countries" value="Netherlands">Netherlands</label>
+            <label class="rr-chip rr-chip-d"><input type="checkbox" name="countries" value="Spain">Spain</label>
+            <label class="rr-chip rr-chip-d"><input type="checkbox" name="countries" value="Italy">Italy</label>
+            <label class="rr-chip rr-chip-d"><input type="checkbox" name="countries" value="Switzerland">Switzerland</label>
+            <label class="rr-chip rr-chip-d"><input type="checkbox" name="countries" value="UK">UK</label>
+            <label class="rr-chip rr-chip-d"><input type="checkbox" name="countries" value="Other">Other / open</label>
+          </div>
+        </div>
         <label style="flex:1 1 100%;display:flex;gap:10px;align-items:flex-start;cursor:pointer">
           <input type="checkbox" name="marketing" style="margin-top:2px;width:16px;height:16px;accent-color:#f4f1e8;flex:none;cursor:pointer">
           <span style="font-size:11.5px;line-height:1.5;color:rgba(244,241,232,.78)">Send me Macademia launch updates (optional). See the <a href="legal.html#privacy" target="_blank" rel="noopener" style="color:#f4f1e8;text-decoration:underline;text-underline-offset:2px">Privacy Policy</a>.</span>
         </label>
-        <button data-magnetic data-submit type="submit" class="bhov-cream" style="flex:1 1 100%;border:none;cursor:pointer;background:#f4f1e8;color:#1f3d2e;font-weight:700;font-size:15px;padding:15px 22px;border-radius:8px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Send me the free guide</button>
+        <button data-magnetic data-submit type="submit" class="bhov-cream" style="flex:1 1 100%;border:none;cursor:pointer;background:#f4f1e8;color:#1f3d2e;font-weight:700;font-size:15px;padding:15px 22px;border-radius:8px;transition:background .2s cubic-bezier(.2,.7,.3,1),transform .2s cubic-bezier(.2,.7,.3,1)">Send me the free checklist</button>
         <p data-error role="alert" style="display:none;flex:1 1 100%;margin:0;font-size:12.5px;line-height:1.5;color:#ffd9d9">We couldn&rsquo;t save your request. Please try again in a moment.</p>
       </form>
       <div data-success style="display:none;margin-top:34px;max-width:560px;border:1px solid rgba(244,241,232,.3);background:rgba(244,241,232,.08);border-radius:8px;padding:24px;gap:14px;align-items:center">
         <span style="flex:none;width:40px;height:40px;border-radius:999px;background:rgba(244,241,232,.14);color:#f4f1e8;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f4f1e8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13l5 5L20 7"/></svg></span>
         <div>
           <div style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600;color:#f4f1e8">Check your inbox to confirm.</div>
-          <div style="font-size:13.5px;color:rgba(244,241,232,.82);margin-top:3px">We&rsquo;ve sent a confirmation link to <span data-success-email style="font-weight:600;color:#f4f1e8">your email</span>. Open it and select &ldquo;Confirm&rdquo; to receive your guide.</div>
+          <div style="font-size:13.5px;color:rgba(244,241,232,.82);margin-top:3px">We&rsquo;ve sent a confirmation link to <span data-success-email style="font-weight:600;color:#f4f1e8">your email</span>. Open it and select &ldquo;Confirm&rdquo; to receive your checklist.</div>
         </div>
       </div>
     </div>
@@ -340,7 +411,7 @@
   </footer>
 
   <div data-mobilebar style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:rgba(244,241,232,.94);backdrop-filter:saturate(1.2) blur(8px);border-top:1px solid #ded9c9">
-    <button data-cta="offer" style="width:100%;border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:14px;border-radius:8px">Get the free guide</button>
+    <button data-cta="offer" style="width:100%;border:none;cursor:pointer;background:#1f3d2e;color:#f4f1e8;font-weight:700;font-size:15px;padding:14px;border-radius:8px">Get the free checklist</button>
   </div>
 
 
@@ -504,18 +575,21 @@
         if(!emailRe.test(email)){ if(em) em.focus(); return; }
         var marketingEl=form.querySelector('[name=marketing]');
         var gv=function(n){ var el=form.querySelector('[name='+n+']'); return ((el&&el.value)||'').trim(); };
+        var countries=Array.prototype.map.call(form.querySelectorAll('[name=countries]:checked'), function(c){ return c.value; });
         var payload={
           email: email,
           first_name: gv('firstName'),
           programme_type: gv('programmeType'),
+          intake_year: gv('intakeYear'),
           country: gv('country'),
-          requested_asset: 'business_school_application_playbook_v1',
+          countries_of_interest: countries,
+          requested_asset: 'application_checklist_v1',
           marketing_opt_in: marketingEl ? !!marketingEl.checked : false,
           policy_version: POLICY_VERSION,
-          source: 'early-access'
+          source: 'early-access-v2'
         };
         if(btn){ btn.setAttribute('data-label', btn.textContent); btn.textContent='Sending\u2026'; btn.disabled=true; }
-        function fail(){ if(errEl) errEl.style.display='block'; if(btn){ btn.textContent=btn.getAttribute('data-label')||'Send me the free guide'; btn.disabled=false; } }
+        function fail(){ if(errEl) errEl.style.display='block'; if(btn){ btn.textContent=btn.getAttribute('data-label')||'Send me the free checklist'; btn.disabled=false; } }
         if(!WAITLIST_ENDPOINT){ fail(); return; }   // no endpoint \u2192 honest error, never a fake success
         fetch(WAITLIST_ENDPOINT,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
           .then(function(r){ if(!r.ok) throw new Error('status '+r.status); showConfirm(email); })
